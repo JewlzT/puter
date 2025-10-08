@@ -23,6 +23,7 @@ import UIWindowChangeUsername from '../UIWindowChangeUsername.js';
 import UIWindowConfirmUserDeletion from './UIWindowConfirmUserDeletion.js';
 import UIWindowManageSessions from '../UIWindowManageSessions.js';
 import UIWindow from '../UIWindow.js';
+import UIAlert from '../UIAlert.js';
 
 // About
 export default {
@@ -89,15 +90,31 @@ export default {
     },
     init: ($el_window) => {
         // function for removing profile picture
-        const removeProfilePicture = function() {
-            const default_image = window.icons['profile.svg'];
-            $el_window.find('.profile-picture').css('background-image', `url('${default_image}')`);
-            $('.profile-image').css('background-image', `url('${default_image}')`);
-            $('.profile-image').removeClass('profile-image-has-picture');
-            update_profile(window.user.username, {picture: null});
-            window.user.profile.picture = null;
-            // hide remove button
-            $el_window.find('.remove-profile-picture').hide();
+        const removeProfilePicture = async function() {
+            // user confirmation
+            const alert_resp = await UIAlert({
+                message: i18n('confirm_delete_single_item'),
+                buttons: [
+                    {
+                        label: i18n('delete'),
+                        type: 'primary',
+                    },
+                    {
+                        label: i18n('cancel'),
+                    },
+                ]
+            });
+            
+            if (alert_resp === i18n('delete')) {
+                const default_image = window.icons['profile.svg'];
+                $el_window.find('.profile-picture').css('background-image', `url('${default_image}')`);
+                $('.profile-image').css('background-image', `url('${default_image}')`);
+                $('.profile-image').removeClass('profile-image-has-picture');
+                update_profile(window.user.username, {picture: null});
+                window.user.profile.picture = null;
+                // hide remove button
+                $el_window.find('.remove-profile-picture').hide();
+            }
         };
 
         $el_window.find('.change-password').on('click', function (e) {
