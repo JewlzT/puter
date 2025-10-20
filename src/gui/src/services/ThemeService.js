@@ -34,6 +34,8 @@ const default_values = {
 
 export class ThemeService extends Service {
     #broadcastService;
+    #lastContrastWarningShown = 0;
+    #contrastWarningTimeout = null; // Add timeout for debouncing
 
     /**
      * Calculate relative luminance of a color according to WCAG guidelines
@@ -135,9 +137,33 @@ export class ThemeService extends Service {
         const darkLuminance = this.#calculateLuminance(darkRgb.r, darkRgb.g, darkRgb.b);
         const darkContrast = this.#calculateContrastRatio(bgLuminance, darkLuminance);
 
-        // WCAG AA requires 4.5:1 for normal text, AAA requires 7:1
-        const minContrast = 4.5; // Use to add a confirmation modal for color picking
-        
+        const minContrast = 4.5;
+        const bestContrast = Math.max(whiteContrast, darkContrast);
+        const roundedContrast = Math.round(bestContrast * 10) / 10; // Round to 1 decimal place
+
+        // Use rounded contrast for comparison to avoid warnings for 4.45-4.49 range
+        if (roundedContrast < minContrast) {
+            // Clear any existing timeout
+            if (this.#contrastWarningTimeout) {
+                clearTimeout(this.#contrastWarningTimeout);
+            }
+            
+            // Set new timeout - warning will show 1/2 second after last change
+            this.#contrastWarningTimeout = setTimeout(() => {
+                const now = Date.now();
+                if (now - this.#lastContrastWarningShown > 5000) {
+                    this.#lastContrastWarningShown = now;
+                    this.#showContrastWarning(roundedContrast); // Pass rounded value to warning
+                }
+            }, 500); // 1 second delay
+        } else {
+            // Good contrast - clear any pending warning
+            if (this.#contrastWarningTimeout) {
+                clearTimeout(this.#contrastWarningTimeout);
+                this.#contrastWarningTimeout = null;
+            }
+        }
+
         if (whiteContrast >= darkContrast) {
             return {
                 color: '#ffffff',
@@ -272,4 +298,25 @@ export class ThemeService extends Service {
             5,
         ));
     }
+
+    async #showContrastWarning(contrastRatio) {
+        try {
+            await UIAlert({
+                message: `<strong>Accessibility Warning: </strong>
+                          Color Contrast Below Standards
+                          <p>The selected colors have a contrast ratio of <strong>${contrastRatio.toFixed(1)}:1</strong>, which is below the WCAG AA recommendation of <strong>4.5:1.</strong></p>`,
+                body_icon: window.icons['warning-sign.svg'],
+                buttons: [
+                    {
+                        label: 'Continue with these colors',
+                        value: 'continue',
+                        type: 'primary',
+                    }
+                ]
+            });
+        } catch (error) {
+            console.error('Error showing contrast warning:', error); // Add debugging
+        }
+    }
+
 }
