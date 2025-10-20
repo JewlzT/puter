@@ -35,6 +35,120 @@ const default_values = {
 export class ThemeService extends Service {
     #broadcastService;
 
+    /**
+     * Calculate relative luminance of a color according to WCAG guidelines
+     * @param {number} r - Red component (0-255)
+     * @param {number} g - Green component (0-255) 
+     * @param {number} b - Blue component (0-255)
+     * @returns {number} Relative luminance (0-1)
+     */
+    #calculateLuminance(r, g, b) {
+        // Convert to 0-1 range
+        r = r / 255;
+        g = g / 255;
+        b = b / 255;
+
+        // Apply gamma correction
+        const gammaCorrect = (c) => {
+            return c <= 0.03928 ? c / 12.92 : Math.pow((c + 0.055) / 1.055, 2.4);
+        };
+
+        r = gammaCorrect(r);
+        g = gammaCorrect(g);
+        b = gammaCorrect(b);
+
+        // Calculate luminance using WCAG formula
+        return 0.2126 * r + 0.7152 * g + 0.0722 * b;
+    }
+
+    /**
+     * Convert HSL color to RGB
+     * @param {number} h - Hue (0-360)
+     * @param {number} s - Saturation (0-100)
+     * @param {number} l - Lightness (0-100)
+     * @returns {Object} RGB values {r, g, b}
+     */
+    #hslToRgb(h, s, l) {
+        h = h / 360;
+        s = s / 100;
+        l = l / 100;
+
+        const hue2rgb = (p, q, t) => {
+            if (t < 0) t += 1;
+            if (t > 1) t -= 1;
+            if (t < 1/6) return p + (q - p) * 6 * t;
+            if (t < 1/2) return q;
+            if (t < 2/3) return p + (q - p) * (2/3 - t) * 6;
+            return p;
+        };
+
+        let r, g, b;
+
+        // If saturation == 0
+        if (s === 0) {
+            r = g = b = l; 
+        } else {
+            const q = l < 0.5 ? l * (1 + s) : l + s - l * s;
+            const p = 2 * l - q;
+            r = hue2rgb(p, q, h + 1/3);
+            g = hue2rgb(p, q, h);
+            b = hue2rgb(p, q, h - 1/3);
+        }
+
+        return {
+            r: Math.round(r * 255),
+            g: Math.round(g * 255),
+            b: Math.round(b * 255)
+        };
+    }
+
+    /**
+     * Calculate contrast ratio between two colors according to WCAG guidelines
+     * @param {number} luminance1 - Luminance of first color
+     * @param {number} luminance2 - Luminance of second color
+     * @returns {number} Contrast ratio (1-21)
+     */
+    #calculateContrastRatio(luminance1, luminance2) {
+        const lighter = Math.max(luminance1, luminance2);
+        const darker = Math.min(luminance1, luminance2);
+        return (lighter + 0.05) / (darker + 0.05);
+    }
+
+    /**
+     * Get the best accessible text color (white or dark) for a given background
+     * @param {number} hue - Background hue (0-360)
+     * @param {number} saturation - Background saturation (0-100)
+     * @param {number} lightness - Background lightness (0-100)
+     * @returns {Object} {color: '#ffffff' | '#373e44', contrastRatio: number, isAccessible: boolean}
+     */
+    #getAccessibleTextColor(hue, saturation, lightness) {
+        // Convert background to RGB then luminance
+        const bgRgb = this.#hslToRgb(hue, saturation, lightness);
+        const bgLuminance = this.#calculateLuminance(bgRgb.r, bgRgb.g, bgRgb.b);
+
+        // Test white text
+        const whiteLuminance = this.#calculateLuminance(255, 255, 255);
+        const whiteContrast = this.#calculateContrastRatio(bgLuminance, whiteLuminance);
+
+        // Test dark text
+        const darkRgb = { r: 0x37, g: 0x3e, b: 0x44 }; // #373e44
+        const darkLuminance = this.#calculateLuminance(darkRgb.r, darkRgb.g, darkRgb.b);
+        const darkContrast = this.#calculateContrastRatio(bgLuminance, darkLuminance);
+
+        // WCAG AA requires 4.5:1 for normal text, AAA requires 7:1
+        const minContrast = 4.5; // Use to add a confirmation modal for color picking
+        
+        if (whiteContrast >= darkContrast) {
+            return {
+                color: '#ffffff',
+            };
+        } else {
+            return {
+                color: '#373e44', 
+            };
+        }
+    }
+
     async _init () {
         this.#broadcastService = globalThis.services.get('broadcast');
 
@@ -116,11 +230,20 @@ export class ThemeService extends Service {
         //     }
         // `)
         // this.root.style.setProperty('--puter-window-background', `hsla(${s.hue}, ${s.sat}%, ${s.lig}%, ${s.alpha})`);
+
+        // Use WCAG calculations to determine the best text color
+        const accessibleText = this.#getAccessibleTextColor(s.hue, s.sat, s.lig);
+        const shouldUseLightText = accessibleText.color === '#ffffff';
+        
+        // Update light_text based on WCAG calculations
+        s.light_text = shouldUseLightText;
+
         this.root.style.setProperty('--primary-hue', s.hue);
         this.root.style.setProperty('--primary-saturation', s.sat + '%');
         this.root.style.setProperty('--primary-lightness', s.lig + '%');
         this.root.style.setProperty('--primary-alpha', s.alpha);
         this.root.style.setProperty('--primary-color', s.light_text ? 'white' : '#373e44');
+        this.root.style.setProperty('--window-action-btn-filter', s.light_text ? 'invert(1)' : 'invert(0)');
 
         // TODO: Should we debounce this to reduce traffic?
         this.#broadcastService.sendBroadcast('themeChanged', {
