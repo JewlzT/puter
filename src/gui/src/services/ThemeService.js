@@ -51,13 +51,13 @@ export class ThemeService extends Service {
         b = b / 255;
 
         // Apply gamma correction
-        const gammaCorrect = (c) => {
+        const gamma_correct = (c) => {
             return c <= 0.03928 ? c / 12.92 : Math.pow((c + 0.055) / 1.055, 2.4);
         };
 
-        r = gammaCorrect(r);
-        g = gammaCorrect(g);
-        b = gammaCorrect(b);
+        r = gamma_correct(r);
+        g = gamma_correct(g);
+        b = gamma_correct(b);
 
         // Calculate luminance using WCAG formula
         return 0.2126 * r + 0.7152 * g + 0.0722 * b;
@@ -75,7 +75,7 @@ export class ThemeService extends Service {
         s = s / 100;
         l = l / 100;
 
-        const hue2rgb = (p, q, t) => {
+        const hue_2_rgb = (p, q, t) => {
             if (t < 0) t += 1;
             if (t > 1) t -= 1;
             if (t < 1/6) return p + (q - p) * 6 * t;
@@ -92,9 +92,9 @@ export class ThemeService extends Service {
         } else {
             const q = l < 0.5 ? l * (1 + s) : l + s - l * s;
             const p = 2 * l - q;
-            r = hue2rgb(p, q, h + 1/3);
-            g = hue2rgb(p, q, h);
-            b = hue2rgb(p, q, h - 1/3);
+            r = hue_2_rgb(p, q, h + 1/3);
+            g = hue_2_rgb(p, q, h);
+            b = hue_2_rgb(p, q, h - 1/3);
         }
 
         return {
@@ -121,28 +121,28 @@ export class ThemeService extends Service {
      * @param {number} hue - Background hue (0-360)
      * @param {number} saturation - Background saturation (0-100)
      * @param {number} lightness - Background lightness (0-100)
-     * @returns {Object} {color: '#ffffff' | '#373e44', contrastRatio: number, isAccessible: boolean}
+     * @returns {Object} {color: '#ffffff' | '#373e44'}
      */
     #getAccessibleTextColor(hue, saturation, lightness) {
         // Convert background to RGB then luminance
-        const bgRgb = this.#hslToRgb(hue, saturation, lightness);
-        const bgLuminance = this.#calculateLuminance(bgRgb.r, bgRgb.g, bgRgb.b);
+        const bg_rgb = this.#hslToRgb(hue, saturation, lightness);
+        const bg_luminance = this.#calculateLuminance(bg_rgb.r, bg_rgb.g, bg_rgb.b);
 
         // Test white text
-        const whiteLuminance = this.#calculateLuminance(255, 255, 255);
-        const whiteContrast = this.#calculateContrastRatio(bgLuminance, whiteLuminance);
+        const white_luminance = this.#calculateLuminance(255, 255, 255);
+        const white_contrast = this.#calculateContrastRatio(bg_luminance, white_luminance);
 
         // Test dark text
-        const darkRgb = { r: 0x37, g: 0x3e, b: 0x44 }; // #373e44
-        const darkLuminance = this.#calculateLuminance(darkRgb.r, darkRgb.g, darkRgb.b);
-        const darkContrast = this.#calculateContrastRatio(bgLuminance, darkLuminance);
+        const dark_rgb = { r: 0x37, g: 0x3e, b: 0x44 }; // #373e44
+        const dark_luminance = this.#calculateLuminance(dark_rgb.r, dark_rgb.g, dark_rgb.b);
+        const dark_contrast = this.#calculateContrastRatio(bg_luminance, dark_luminance);
 
-        const minContrast = 4.5;
-        const bestContrast = Math.max(whiteContrast, darkContrast);
-        const roundedContrast = Math.round(bestContrast * 10) / 10; // Round to 1 decimal place
+        const min_contrast = 4.5;
+        const best_contrast = Math.max(white_contrast, dark_contrast);
+        const rounded_contrast = Math.round(best_contrast * 10) / 10; // Round to 1 decimal place
 
         // Use rounded contrast for comparison to avoid warnings for 4.45-4.49 range
-        if (roundedContrast < minContrast) {
+        if (rounded_contrast < min_contrast) {
             // Clear any existing timeout
             if (this.#contrastWarningTimeout) {
                 clearTimeout(this.#contrastWarningTimeout);
@@ -153,7 +153,7 @@ export class ThemeService extends Service {
                 const now = Date.now();
                 if (now - this.#lastContrastWarningShown > 5000) {
                     this.#lastContrastWarningShown = now;
-                    this.#showContrastWarning(roundedContrast);
+                    this.#showContrastWarning(rounded_contrast);
                 }
             }, 500);
         } else {
@@ -164,7 +164,7 @@ export class ThemeService extends Service {
             }
         }
 
-        if (whiteContrast >= darkContrast) {
+        if (white_contrast >= dark_contrast) {
             return {
                 color: '#ffffff',
             };
@@ -258,11 +258,11 @@ export class ThemeService extends Service {
         // this.root.style.setProperty('--puter-window-background', `hsla(${s.hue}, ${s.sat}%, ${s.lig}%, ${s.alpha})`);
 
         // Use WCAG calculations to determine the best text color
-        const accessibleText = this.#getAccessibleTextColor(s.hue, s.sat, s.lig);
-        const shouldUseLightText = accessibleText.color === '#ffffff';
+        const accessible_text = this.#getAccessibleTextColor(s.hue, s.sat, s.lig);
+        const use_light_text = accessible_text.color === '#ffffff';
         
         // Update light_text based on WCAG calculations
-        s.light_text = shouldUseLightText;
+        s.light_text = use_light_text;
 
         this.root.style.setProperty('--primary-hue', s.hue);
         this.root.style.setProperty('--primary-saturation', s.sat + '%');
@@ -299,12 +299,13 @@ export class ThemeService extends Service {
         ));
     }
 
-    async #showContrastWarning(contrastRatio) {
+    async #showContrastWarning(contrast_ratio) {
         try {
             await UIAlert({
                 message: `<strong>Accessibility Warning: </strong>
                           Color Contrast Below Standards
-                          <p>The selected colors have a contrast ratio of <strong>${contrastRatio.toFixed(1)}:1</strong>, which is below the WCAG AA recommendation of <strong>4.5:1.</strong></p>`,
+                          <p>The selected colors have a contrast ratio of <strong>${contrast_ratio.toFixed(1)}:1</strong>, which is below the WCAG AA recommendation of <strong>4.5:1</strong>.
+                          This might make the text a little harder to read.</p>`,
                 body_icon: window.icons['warning-sign.svg'],
                 buttons: [
                     {
