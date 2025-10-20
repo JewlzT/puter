@@ -153,9 +153,9 @@ export class ThemeService extends Service {
                 const now = Date.now();
                 if (now - this.#lastContrastWarningShown > 5000) {
                     this.#lastContrastWarningShown = now;
-                    this.#showContrastWarning(roundedContrast); // Pass rounded value to warning
+                    this.#showContrastWarning(roundedContrast);
                 }
-            }, 500); // 1 second delay
+            }, 500);
         } else {
             // Good contrast - clear any pending warning
             if (this.#contrastWarningTimeout) {
