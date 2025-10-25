@@ -168,7 +168,7 @@ function UIAlert(options){
                 
                 // Add custom CSS classes
                 let customClasses = '';
-                if(button.css_class) {
+                if(button.css_class && !button.type) {
                     if(typeof button.css_class === 'string') {
                         customClasses = ` ${button.css_class}`;
                     } else if(Array.isArray(button.css_class)) {
