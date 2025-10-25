@@ -1468,6 +1468,47 @@ span.header-sort-icon img {
     word-break: break-word;
 }
 
+/* Alert type-specific styling */
+.window-alert-success {
+    border-left: 4px solid #28a745;
+}
+
+.window-alert-success .window-alert-message {
+    color: #155724;
+}
+
+.window-alert-error {
+    border-left: 4px solid #dc3545;
+}
+
+.window-alert-error .window-alert-message {
+    color: #721c24;
+}
+
+.window-alert-info {
+    border-left: 4px solid #17a2b8;
+}
+
+.window-alert-info .window-alert-message {
+    color: #0c5460;
+}
+
+.window-alert-question {
+    border-left: 4px solid #c968ef;
+}
+
+.window-alert-question .window-alert-message {
+    color: #6e3684;
+}
+
+.window-alert-warning {
+    border-left: 4px solid #ffc107;
+}
+
+.window-alert-warning .window-alert-message {
+    color: #6C5204;
+}
+
 .window-alert-message {
     text-align: center;
 }
