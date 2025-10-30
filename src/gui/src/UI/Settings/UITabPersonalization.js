@@ -49,7 +49,7 @@ export default {
                 </select>
             </div>
             <div class="settings-card">
-                <strong style="flex-grow:1;">Toolbar Auto-Hide</strong>
+                <strong style="flex-grow:1;">${i18n('toolbar_autohide')}</strong>
                 <label class="toggle-switch" style="margin-left: 10px;">
                     <input type="checkbox" class="toggle-toolbar-autohide" ${window.user_preferences.toolbar_autohide ? 'checked' : ''}>
                     <span class="toggle-switch-slider"></span>
