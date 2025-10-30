@@ -290,6 +290,7 @@ const nl = {
 		taskmgr_header_type: 'Type',
 		terms: 'Voorwaarden',
 		text_document: 'Tekstdocument',
+		toolbar_autohide: "Werkbalk Verbergen",
 		tos_fineprint: `Door op 'Gratis Account Aanmaken' te klikken, ga je akkoord met de {{link=terms}}Servicevoorwaarden{{/link}} en de {{link=privacy}}Privacybeleid{{/link}} van Puter.`,
 		transparency: 'Transparantie',
 		trash: 'Prullenbak',

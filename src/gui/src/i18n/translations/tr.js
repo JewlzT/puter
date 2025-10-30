@@ -289,6 +289,7 @@ const tr = {
         taskmgr_header_type: "Tür",
         terms: "Şartlar",
         text_document: "Metin belgesi",
+        toolbar_autohide: "Araç Çubuğunu Gizle",
         tos_fineprint: "'Ücretsiz Hesap Oluştur'u tıklayarak Puter'ın {{link=terms}}Hizmet Şartları{{/link}} ve {{link=privacy}}Gizlilik Politikası{{/link}}'nı kabul etmiş olursunuz.",
         transparency: "Saydamlık",
         trash: "Çöp Kutusu",

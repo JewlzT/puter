@@ -289,6 +289,7 @@ const hi = {
         taskmgr_header_type: "प्रकार",
         terms: "Terms",
         text_document: 'Text document',
+        toolbar_autohide: "टूलबार छुपाएं",
         tos_fineprint: "'निःशुल्क खाता बनाएं' पर क्लिक करके आप पुटर की {{link=terms}}सेवा की शर्तों{{/लिंक}} और {{link=privacy}}गोपनीयता नीति{{/लिंक}} से सहमत होते हैं।",
         transparency: "पारदर्शिता",
         trash: 'कचरा',

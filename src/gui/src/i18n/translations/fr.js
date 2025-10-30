@@ -289,6 +289,7 @@ const fr = {
         taskmgr_header_type: "Type",
         terms: "Termes",
         text_document: 'Document texte',
+        toolbar_autohide: "Masquer Barre d'Outils",
         tos_fineprint: `En cliquant sur "Créer un compte gratuit", vous acceptez les {{link=terms}}Conditions d'utilisation{{/link}} et la {{link=privacy}}Politique de confidentialité{{/link}} de Puter.`,
         transparency: "Transparence",
         trash: 'Corbeille',

@@ -292,6 +292,7 @@ const ua = {
         taskmgr_header_type: "Тип",
         terms: "Умови",
         text_document: "Текстовий документ",
+        toolbar_autohide: "Сховати Панель Інструментів",
         tos_fineprint: "Натискаючи 'Створити безкоштовний обліковий запис', ви погоджуєтеся з {{link=terms}}Умовами Використання{{/link}} та {{link=privacy}}Політикою Конфіденційності{{/link}} Puter.",
         transparency: "Прозорість",
         trash: "Кошик",

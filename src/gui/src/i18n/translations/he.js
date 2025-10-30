@@ -306,6 +306,7 @@ const en = {
     taskmgr_header_type: "סוג",
     terms: "תנאים",
     text_document: "מסמך טקסטואלי",
+    toolbar_autohide: "הסתר סרגל כלים",
     tos_fineprint: `על ידי לחיצה על 'צור חשבון חינם' אתה מסכים Puter's {{link=terms}}תנאי שימוש{{/link}} ו {{link=privacy}}מדיניות פרטיות{{/link}}.`,
     transparency: "שקיפות",
     trash: "אשפה",

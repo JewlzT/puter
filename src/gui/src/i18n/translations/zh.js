@@ -290,6 +290,7 @@ const zh = {
         taskmgr_header_type: "类型",
         terms: "条款",
         text_document: '文本文档',
+        toolbar_autohide: "隐藏工具栏",
         tos_fineprint: `点击“创建免费帐户”即表示您同意 Puter 的 {{link=terms}}服务条款{{/link}} 和 {{link=privacy}}隐私政策{{/link}}。`,
         transparency: "透明度",
         trash: '回收站',

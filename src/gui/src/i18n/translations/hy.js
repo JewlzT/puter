@@ -289,6 +289,7 @@ const hy = {
         taskmgr_header_type: "Տեսակ",
         terms: "Պայմաններ",
         text_document: "Տեքստային փաստաթուղթ",
+        toolbar_autohide: "Թաքցնել Գործիքների Վահանակը",
         tos_fineprint: "Սեղմելով «Ստեղծել անվճար հաշիվ»՝ դուք համաձայնում եք Փութերի {{link=terms}}ծառայությունների պայմաններին{{/link}} և {{link=privacy}}գաղտնիության քաղաքականությանը{{/link}}:",
         transparency: "Թափանցիկություն",
         trash: "Աղբարկղ",

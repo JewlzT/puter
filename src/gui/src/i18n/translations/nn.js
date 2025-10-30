@@ -150,6 +150,7 @@ const nn = {
         start: "Start",
         taking_longer_than_usual: "Dette tar litt lengre tid enn vanleg. Vennligst vent...",
         text_document: "Tekstdokument",
+        toolbar_autohide: "Gøym Verktøylinje",
         tos_fineprint: "Ved å klikke på 'Opprett gratis konto' godtek du Puters {{link=terms}}tenestevilkår{{/link}} og {{link=privacy}}personvernpolitikk{{/link}}.",
         trash: "Papirkorg",
         type: "Type",

@@ -289,6 +289,7 @@ const pl = {
         taskmgr_header_type: "Typ",
         terms: "Warunki",
         text_document: 'Dokument tekstowy',
+        toolbar_autohide: "Ukryj Pasek Narzędzi",
         tos_fineprint: `Klikając 'Stwórz darmowe konto' Zgadzasz się z {{link=terms}}Warunkami Obsługi{{/link}} i {{link=privacy}}Polityką Prywatności{{/link}}.`,
         transparency: "Przezroczystość",
         trash: 'Kosz',

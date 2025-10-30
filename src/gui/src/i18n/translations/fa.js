@@ -167,6 +167,7 @@ const fa = {
     taking_longer_than_usual: "کمی بیشتر از معمول طول می کشد. لطفا صبر کنید...",
     task_manager: "مدیر وظایف",
     text_document: "سند متنی",
+    toolbar_autohide: "مخفی کردن نوار ابزار",
     tos_fineprint: `با کلیک بر روی 'ایجاد حساب کاربری رایگان' شما با {{link=terms}}شرایط خدمات{{/link}} و {{link=privacy}}سیاست حفظ حریم خصوصی{{/link}} Puter موافقت می کنید.`,
     trash: "سطل زباله",
     type: "نوع",

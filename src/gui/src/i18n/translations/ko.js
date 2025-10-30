@@ -312,6 +312,7 @@ const ko = {
     taskmgr_header_type: "유형",
     terms: "약관",
     text_document: "텍스트 문서",
+    toolbar_autohide: "도구 모음 숨기기",
     tos_fineprint: `무료 계정 생성을 클릭하면 Puter의 {{link=terms}}서비스 약관{{/link}}과 {{link=privacy}}개인정보 보호정책{{/link}}에 동의하는 것입니다.`,
     transparency: "투명도",
     trash: "휴지통",

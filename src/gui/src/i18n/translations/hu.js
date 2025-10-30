@@ -285,6 +285,7 @@ const hu = {
         taskmgr_header_type: "Típus",
         terms: "Feltételek",
         text_document: "Szöveges dokumentum",
+        toolbar_autohide: "Eszköztár Elrejtése",
         tos_fineprint: "A 'Ingyenes fiók létrehozása' gombra kattintva elfogadod a Puter {{link=terms}}Szolgáltatási feltételeit{{/link}} és {{link=privacy}}Adatvédelmi irányelveit{{/link}}.",
         transparency: "Átlátszóság",
         trash: "Kuka",

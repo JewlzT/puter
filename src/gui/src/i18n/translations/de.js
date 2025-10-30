@@ -289,6 +289,7 @@ const de = {
         taskmgr_header_type: "Typ",
         terms: "Bedingungen",
         text_document: 'Textdokument',
+        toolbar_autohide: "Symbolleiste Ausblenden",
         tos_fineprint: `Durch Klicken auf 'Kostenloses Konto erstellen' stimmen Sie den {{link=terms}}Nutzungsbedingungen{{/link}} und den {{link=privacy}}Datenschutzrichtlinien{{/link}} von Puter zu.`,
         transparency: "Transparenz",
         trash: 'Papierkorb',

@@ -321,6 +321,7 @@ const ru = {
     taskmgr_header_type: 'Тип',
     terms: 'Условия',
     text_document: 'Текстовый документ',
+    toolbar_autohide: "Скрыть Панель Инструментов",
     tos_fineprint: `Нажимая 'Создать бесплатную учетную запись', вы соглашаетесь с {{link=terms}}Условиями Использования{{/link}} и {{link=privacy}}Политикой Конфиденциальности{{/link}} Puter.`,
     transparency: 'Прозрачность',
     trash: 'Корзина',

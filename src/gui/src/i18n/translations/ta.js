@@ -288,6 +288,7 @@ const ta = {
         taskmgr_header_type: "வகை",
         terms: "விதிமுறை",
         text_document: 'உரை ஆவணம்',
+        toolbar_autohide: "கருவிப்பட்டியை மறை",
         tos_fineprint: `'இலவச கணக்கை உருவாக்கு' என்பதைக் கிளிக் செய்வதன் மூலம், புட்டர் இன் {{link=terms}}சேவை விதிமுறைகள்{{/link}} மற்றும் {{link=privacy}}தனியுரிமைக் கொள்கையை{{/link}} ஏற்கிறீர்கள்.`,
         transparency: "வெளிப்படைத்தன்மை",
         trash: 'குப்பை',

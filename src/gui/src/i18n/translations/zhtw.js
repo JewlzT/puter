@@ -289,6 +289,7 @@ const zhtw = {
         taskmgr_header_type: "類型",
         terms: "條款",
         text_document: '文字文件',
+        toolbar_autohide: "隱藏工具列",
         tos_fineprint: `點擊「建立免費帳戶」即表示您同意 Puter 的{{link=terms}}服務條款{{/link}}和{{link=privacy}}隱私政策{{/link}}`,
         transparency: "透明度",
         trash: '垃圾桶',

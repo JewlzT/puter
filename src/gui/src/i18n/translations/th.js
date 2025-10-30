@@ -286,6 +286,7 @@ const th = {
         taskmgr_header_type: "ประเภท",
         terms: "เงื่อนไข",
         text_document: "เอกสารข้อความ",
+        toolbar_autohide: "ซ่อนแถบเครื่องมือ",
         tos_fineprint: `การคลิก 'สร้างบัญชีฟรี' หมายความว่าคุณยอมรับ {{link=terms}}ข้อกำหนดการให้บริการ{{/link}} และ {{link=privacy}}นโยบายความเป็นส่วนตัว{{/link}}.`,
         transparency: "ความโปร่งใส",
         trash: "ถังขยะ",

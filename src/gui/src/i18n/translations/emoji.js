@@ -168,6 +168,7 @@ const emoji = {
         start: '🚀',
         taking_longer_than_usual: '⏳🔄',
         text_document: '📄',
+        toolbar_autohide: "🔧🙈",
         tos_fineprint: `👤📝📄`,
         trash: '🗑️',
         type: '🔡',

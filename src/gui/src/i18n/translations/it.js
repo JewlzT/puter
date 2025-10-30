@@ -319,6 +319,7 @@ const it = {
     taskmgr_header_type: "Tipo",
     terms: "Termini",
     text_document: "Documento di testo",
+    toolbar_autohide: "Nascondi Barra Strumenti",
     tos_fineprint: `Cliccando su 'Crea un account gratis' accetti i {{link=terms}}Termini di Servizio{{/link}} e l'{{link=privacy}}Informativa sulla Privacy{{/link}} di Puter.`,
     transparency: "Trasparenza",
     trash: "Cestino",

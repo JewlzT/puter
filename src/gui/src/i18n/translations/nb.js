@@ -168,6 +168,7 @@ const nb = {
         start: "Start",
         taking_longer_than_usual: "Dette tar litt lenger tid enn vanlig. Vennligst vent...",
         text_document: "Tekstdokument",
+        toolbar_autohide: "Skjul Verktøylinje",
         tos_fineprint: "Ved å klikke på 'Opprett gratis konto' godtar du Puters {{link=terms}}tjenestevilkår{{/link}} og {{link=privacy}}personvernpolicy{{/link}}.",
         trash: "Papirkurv",
         type: "Type",

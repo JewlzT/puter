@@ -316,6 +316,7 @@ const ku = {
     taskmgr_header_type: "جۆر",
     terms: "مەرجەکان",
     text_document: "بەڵگەی دەقی",
+    toolbar_autohide: "Daristana Amûran Veşêre",
     tos_fineprint:
       " `بە گەیشتن بۆ 'دروستکردنی هەژماری ئازاد' ڕازییەتی بە {{link=terms}}مەرجەکانی خزمەتگوزاری{{/link}} و {{link=privacy}}پاراستنی تایبەتمەندی{{/link}}ی پوتەر.",
     transparency: "ڕووناکی",

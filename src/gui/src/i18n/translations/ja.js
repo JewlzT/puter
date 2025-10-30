@@ -290,6 +290,7 @@ const ja = {
         taskmgr_header_type: "タイプ",
         terms: "利用規約",
         text_document: 'テキスト文書',
+        toolbar_autohide: "ツールバー非表示",
         tos_fineprint: `「無料アカウントを作成」をクリックすることで、Puterの{{link=terms}}利用規約{{/link}}および{{link=privacy}}プライバシーポリシー{{/link}}に同意するものとします。`,
         transparency: "透明度",
         trash: 'ゴミ箱',

@@ -290,6 +290,7 @@ const sv = {
         taskmgr_header_type: "Typ",
         terms: "Villkor",
         text_document: "Textdokument",
+        toolbar_autohide: "Dölj Verktygsfält",
         tos_fineprint: "Genom att klicka på 'Skapa gratis konto' godkänner du Puters {{link=terms}}användarvillkor{{/link}} och {{link=privacy}}integritetspolicy{{/link}}.",
         transparency: "Transparens",
         trash: "Papperskorg",

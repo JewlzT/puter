@@ -313,6 +313,7 @@ const ig = {
     taskmgr_header_type: "Ụdị",
     terms: "Usoro",
     text_document: "Akwụkwọ ederede",
+    toolbar_autohide: "Zoo Toolbar",
     tos_fineprint: `Site na ịpị 'Mepụta Akaụntụ efu' ị kwenyere na Puter {{link=terms}} Usoro ọrụ{{/link}} na {{link=privacy}}Amụma nzuzo{{/link}} Puter.`,
     transparency: "nghọta",
     trash: "ahịhịa",

@@ -292,6 +292,7 @@ const bn = {
     taskmgr_header_type: "ধরণ",
     terms: "শর্তাবলী",
     text_document: "পাঠ্য নথি",
+    toolbar_autohide: "Eszköztár Elrejtése",
     tos_fineprint: `‘ফ্রি অ্যাকাউন্ট তৈরি করুন’ ক্লিক করে আপনি Puter-এর {{link=terms}}সেবা শর্ত{{/link}} এবং {{link=privacy}}গোপনীয়তা নীতি{{/link}} এর সাথে সম্মত হন।`,
     transparency: "স্বচ্ছতা",
     trash: "আবর্জনা",

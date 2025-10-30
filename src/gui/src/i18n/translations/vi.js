@@ -290,6 +290,7 @@ const vi = {
         taskmgr_header_type: "Loại",
         terms: "Điều khoản",
         text_document: 'Tài liệu văn bản',
+        toolbar_autohide: "Ẩn Thanh Công Cụ",
         tos_fineprint: `Bằng cách nhấp vào 'Tạo tài khoản miễn phí', bạn đồng ý với {{link=terms}}Điều khoản dịch vụ{{/link}} và {{link=privacy}}Chính sách quyền riêng tư{{/link}} của Puter.`,
         transparency: "Độ trong suốt",
         trash: 'Thùng rác',

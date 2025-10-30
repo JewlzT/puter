@@ -326,6 +326,7 @@ const es = {
     taskmgr_header_type: 'Tipo',
     terms: 'Terminos',
     text_document: 'Documento de Texto',
+    toolbar_autohide: "Ocultar Barra de Herramientas",
     tos_fineprint: `Al hacer clic en 'Crear una cuenta gratuita' aceptas los {{link=terms}}términos del servicio{{/link}} y {{link=privacy}}la política de privacidad{{/link}} de Puter.`,
     transparency: 'Transparencia',
     trash: 'Papelera',

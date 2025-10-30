@@ -289,6 +289,7 @@ const da = {
 		taskmgr_header_type: 'Type',
 		terms: 'Vilkår',
 		text_document: 'Tekstdokument',
+		toolbar_autohide: "Skjul Værktøjslinje",
 		tos_fineprint: `Ved at klikke på 'Opret gratis konto' accepterer du Puters {{link=terms}}Brugsvilkår{{/link}} og {{link=privacy}}Privatlivspolitik{{/link}}.`,
 		transparency: 'Gennemsigtighed',
 		trash: 'Papirkurv',
