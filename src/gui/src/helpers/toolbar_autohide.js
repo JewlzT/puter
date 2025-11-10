@@ -26,18 +26,14 @@ window.toolbar_autohide = {
     eventHandlers: {},
     
     init() {
-        console.log('Toolbar auto-hide system initialized');
-        
         // Clean up any existing handlers first
         this.remove_event_handlers();
 
         // Set up event handlers and start timer if enabled
         if (window.user_preferences?.toolbar_autohide) {
-            console.log('Auto-hide enabled - setting up event handlers');
             this.setup_event_handlers();
             this.start_timer();
         } else {
-            console.log('Auto-hide disabled - no event handlers set up');
             this.clear_timer();
             this.show_toolbar();
         }
@@ -47,22 +43,18 @@ window.toolbar_autohide = {
     setup_event_handlers() {
         this.eventHandlers.mousemove = (e) => {
             this.mouseY = e.clientY;
-            console.log(`Mouse Y: ${this.mouseY} (Top zone: ${this.mouseY < this.TOP_PROXIMITY_ZONE ? 'YES' : 'NO'})`);
             this.reset_timer();
         };
         
         this.eventHandlers.click = (e) => {
-            console.log('Click detected');
             this.reset_timer();
         };
         
         this.eventHandlers.keydown = (e) => {
-            console.log('Keydown detected');
             this.reset_timer();
         };
         
         this.eventHandlers.scroll = (e) => {
-            console.log('Scroll detected');
             this.reset_timer();
         };
         
@@ -75,8 +67,6 @@ window.toolbar_autohide = {
     
     // Remove all event listeners if they exist
     remove_event_handlers() {
-        console.log('Removing toolbar auto-hide event handlers');
-        
         if (this.eventHandlers.mousemove) {
             document.removeEventListener('mousemove', this.eventHandlers.mousemove);
         }
@@ -102,8 +92,6 @@ window.toolbar_autohide = {
         if (!window.user_preferences?.toolbar_autohide || this.is_hidden) {
             return;
         }
-        
-        console.log('Hiding toolbar with animation');
         const toolbar = document.querySelector('.toolbar');
         const desktop = document.querySelector('.desktop');
         
@@ -116,14 +104,12 @@ window.toolbar_autohide = {
             window.desktop_height = window.innerHeight - window.taskbar_height;
             desktop.style.height = window.desktop_height + 'px';
             desktop.style.top = '0px';
-            console.log('Desktop expanded to full height:', window.desktop_height);
         }
         
         this.is_hidden = true;
     },
     
     show_toolbar() {
-        console.log('Showing toolbar');
         const toolbar = document.querySelector('.toolbar');
         const desktop = document.querySelector('.desktop');
         
@@ -136,7 +122,6 @@ window.toolbar_autohide = {
             window.desktop_height = window.innerHeight - window.toolbar_height - window.taskbar_height;
             desktop.style.height = window.desktop_height + 'px';
             desktop.style.top = window.toolbar_height + 'px';
-            console.log('Desktop restored to normal height:', window.desktop_height);
         }
         
         this.is_hidden = false;
@@ -149,9 +134,7 @@ window.toolbar_autohide = {
             return;
         }
         
-        console.log('Starting 2-second inactivity timer');
         this.timer = setTimeout(() => {
-            console.log('Timer expired - should hide toolbar');
             this.hide_toolbar();
         }, 2000);
     },
@@ -164,12 +147,10 @@ window.toolbar_autohide = {
     },
     
     reset_timer() {
-        console.log('Activity detected - resetting timer');
         this.clear_timer();
         
         // If mouse is near top and toolbar is hidden, show it immediately
         if (this.is_hidden && this.is_mouse_near_top()) {
-            console.log('Mouse near top - showing toolbar');
             this.show_toolbar();
         }
         
