@@ -270,6 +270,7 @@ const zhtw = {
         share_with: "分享給：",
         shortcut_to: "捷徑到",
         show_all_windows: "顯示所有視窗",
+        show_desktop_icons: "Show desktop icons",
         show_hidden: '顯示隱藏項目',
         sign_in_with_puter: "使用 Puter 登入",
         sign_up: "註冊",

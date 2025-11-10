@@ -158,6 +158,7 @@ const nb = {
         set_new_password: "Angi nytt passord",
         share_to: "Del",
         show_all_windows: "Vis alle vinduer",
+        show_desktop_icons: "Show desktop icons",
         show_hidden: "Vis skjulte",
         sign_in_with_puter: "Logg inn med Puter",
         sign_up: "Registrer deg",

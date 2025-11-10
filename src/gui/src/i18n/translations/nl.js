@@ -271,6 +271,7 @@ const nl = {
 		share_with: 'Delen met:',
 		shortcut_to: 'Snelkoppeling naar',
 		show_all_windows: 'Toon alle vensters',
+		show_desktop_icons: "Show desktop icons",
 		show_hidden: 'Toon verborgen',
 		sign_in_with_puter: 'Inloggen met Puter',
 		sign_up: 'Aanmelden',

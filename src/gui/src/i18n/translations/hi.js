@@ -270,6 +270,7 @@ const hi = {
         share_with: "के साथ साझा करें",
         shortcut_to: "के लिए शॉर्टकट",
         show_all_windows: "सभी विंडोज़ दिखाएँ",
+        show_desktop_icons: "Show desktop icons",
         show_hidden: 'छिपा हुआ दिखाएं',
         sign_in_with_puter: "पुटर के साथ साइन इन करें",
         sign_up: "साइन अप करें",

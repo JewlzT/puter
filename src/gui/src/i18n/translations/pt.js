@@ -274,6 +274,7 @@ const pt = {
         share_with: " Partilhar com:",
         shortcut_to: "Atalho para",
         show_all_windows: "Mostrar Todas as Janelas",
+        show_desktop_icons: "Show desktop icons",
         show_hidden: 'Exibir janelas ocultas',
         sign_in_with_puter: "Entrar em Puter",
         sign_up: "Registar",

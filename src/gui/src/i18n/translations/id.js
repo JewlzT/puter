@@ -288,6 +288,7 @@ const id = {
     share_with: "Bagikan dengan:",
     shortcut_to: "Jalan Pintas ke",
     show_all_windows: "Tampilkan Semua Jendela",
+    show_desktop_icons: "Show desktop icons",
     show_hidden: "Tampilkan yang tersembunyi",
     sign_in_with_puter: "Masuk dengan Puter",
     sign_up: "Daftar",

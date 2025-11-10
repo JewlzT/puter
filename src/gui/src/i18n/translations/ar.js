@@ -289,6 +289,7 @@ const ar = {
       share_with: "مشاركة مع:",
       shortcut_to: "اختصار إلى",
       show_all_windows: "عرض جميع النوافذ",
+      show_desktop_icons: "Show desktop icons",
       show_hidden: "إظهار المخفي",
       sign_in_with_puter: "تسجيل الدخول باستخدام Puter",
       sign_up: "تسجيل",

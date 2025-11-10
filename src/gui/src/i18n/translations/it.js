@@ -299,6 +299,7 @@ const it = {
     share_with: "Condividi con",
     shortcut_to: "Scorciatoia per",
     show_all_windows: "Mostra tutte le finestre",
+    show_desktop_icons: "Show desktop icons",
     show_hidden: "Mostra nascosti",
     sign_in_with_puter: "Accedi con Puter",
     sign_up: "Registrati",

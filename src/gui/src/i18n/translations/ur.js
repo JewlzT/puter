@@ -276,6 +276,7 @@ const ur = {
     set_new_password: "نیا پاس ورڈ مقرر کریں ",
     share_to: " کے ساتھ شیئر کریں",
     show_all_windows: "تمام ونڈوز دکھائیں ",
+    show_desktop_icons: "Show desktop icons",
     show_hidden: "پوشیدہ دکھائیں ",
     sign_in_with_puter: "پیوٹر کے ساتھ سائن ان کریں",
     sign_up: "سائن اپ کریں",

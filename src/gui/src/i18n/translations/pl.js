@@ -270,6 +270,7 @@ const pl = {
         share_with: "Udostępnij dla:",
         shortcut_to: "Skrót do",
         show_all_windows: "Pokaż wszystkie okna",
+        show_desktop_icons: "Show desktop icons",
         show_hidden: 'Pokaż ukryte',
         sign_in_with_puter: "Zaloguj się z Puter",
         sign_up: "Zarejestruj się",

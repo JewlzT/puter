@@ -293,6 +293,7 @@ const ig = {
     share_with: "ji ike nye:",
     shortcut_to: "Ụzọ mkpirisi ka",
     show_all_windows: "Gosi Windows niile",
+    show_desktop_icons: "Show desktop icons",
     show_hidden: "Gosi ihe ezozo",
     sign_in_with_puter: "Jiri Puter banye",
     sign_up: "Debanye aha",

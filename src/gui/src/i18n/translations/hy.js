@@ -270,6 +270,7 @@ const hy = {
         share_with: "Տարածել հետ՝",
         shortcut_to: "Դյուրանցում դեպի",
         show_all_windows: "Ցույց տալ բոլոր պատուհանները",
+        show_desktop_icons: "Show desktop icons",
         show_hidden: "Ցույց տալ թաքնված տարրերը",
         sign_in_with_puter: "Մուտք գործել Փութերի միջոցով",
         sign_up: "Գրանցվել",

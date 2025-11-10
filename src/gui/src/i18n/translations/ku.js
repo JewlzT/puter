@@ -297,6 +297,7 @@ const ku = {
     share_with: "هاوبەشکردن بە:",
     shortcut_to: "شارتی بۆ",
     show_all_windows: "پیشاندانی هەموو پەنجەکان",
+    show_desktop_icons: "Show desktop icons",
     show_hidden: "پیشاندانی شاردراوەکان",
     sign_in_with_puter: "چوونەژوورەوە بە پوتەر",
     sign_up: "خۆتۆمارکردن",

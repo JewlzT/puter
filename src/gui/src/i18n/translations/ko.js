@@ -291,6 +291,7 @@ const ko = {
     share_with: "공유 대상",
     shortcut_to: "바로 가기",
     show_all_windows: "모든 창 표시",
+    show_desktop_icons: "Show desktop icons",
     show_hidden: "숨김 항목 표시",
     sign_in_with_puter: "Puter로 로그인",
     sign_up: "가입",

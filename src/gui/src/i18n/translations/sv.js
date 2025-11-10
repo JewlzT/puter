@@ -271,6 +271,7 @@ const sv = {
         share_with: "Dela med:",
         shortcut_to: "Genväg till",
         show_all_windows: "Visa alla fönster",
+        show_desktop_icons: "Show desktop icons",
         show_hidden: "Visa dolda",
         sign_in_with_puter: "Logga in med Puter",
         sign_up: "Skapa konto",
