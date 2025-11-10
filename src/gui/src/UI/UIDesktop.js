@@ -710,6 +710,7 @@ async function UIDesktop(options){
         show_hidden_files: JSON.parse(await puter.kv.get('user_preferences.show_hidden_files')),
         language: await puter.kv.get('user_preferences.language'),
         clock_visible: await puter.kv.get('user_preferences.clock_visible'),
+        toolbar_autohide: await puter.kv.get('user_preferences.toolbar_autohide')
     };
 
     // update default apps

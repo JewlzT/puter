@@ -259,6 +259,7 @@ const ku = {
     refresh: "بوژانەوە",
     release_address_confirmation: `دڵنیایت کە ئەتەوێت ئەم ناونیشانە بۆ هەڵگرتن؟`,
     remove_from_taskbar: "لابردن لە تاکسبار",
+    remove_profile_picture: 'وێنەی پڕۆفایل بسڕەوە',
     rename: "ناونانەوە",
     repeat: "دووبارەکردنەوە",
     replace: "لە نوێکردنەوە",
@@ -315,6 +316,7 @@ const ku = {
     taskmgr_header_type: "جۆر",
     terms: "مەرجەکان",
     text_document: "بەڵگەی دەقی",
+    toolbar_autohide: "Daristana Amûran Veşêre",
     tos_fineprint:
       " `بە گەیشتن بۆ 'دروستکردنی هەژماری ئازاد' ڕازییەتی بە {{link=terms}}مەرجەکانی خزمەتگوزاری{{/link}} و {{link=privacy}}پاراستنی تایبەتمەندی{{/link}}ی پوتەر.",
     transparency: "ڕووناکی",

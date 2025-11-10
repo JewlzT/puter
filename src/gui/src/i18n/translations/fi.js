@@ -306,6 +306,7 @@ const fi = {
     // "publish" => "Oletko varma, että haluat julkaista tämän osoitteen?"
 
     remove_from_taskbar: "Poista tehtäväpalkista",
+    remove_profile_picture: 'Poista profiilikuva',
     rename: "Nimeä uudelleen",
     repeat: "Toista",
     replace: "Replace",
@@ -368,6 +369,7 @@ const fi = {
     taskmgr_header_type: "Tyyppi",
     terms: "Ehdot",
     text_document: "Tekstiasiakirja",
+    toolbar_autohide: "Piilota Työkalurivi",
     tos_fineprint: `Klikkaamalla 'Luo ilmainen tili' hyväksyt Puterin {{link=terms}}käyttöehdot{{/link}} ja {{link=privacy}}tietosuojakäytännön{{/link}}.`,
     transparency: "Läpinäkyvyys",
 

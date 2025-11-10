@@ -252,6 +252,7 @@ const ar = {
       refresh: "تحديث",
       release_address_confirmation: "هل أنت متأكد أنك تريد تحرير هذا العنوان؟",
       remove_from_taskbar: "إزالة من شريط المهام",
+      remove_profile_picture: "إزالة صورة الملف الشخصي",
       rename: "إعادة تسمية",
       repeat: "تكرار",
       replace: "استبدال",
@@ -307,6 +308,7 @@ const ar = {
       taskmgr_header_type: "النوع",
       terms: "الشروط",
       text_document: "مستند نصي",
+      toolbar_autohide: "إخفاء شريط الأدوات",
       tos_fineprint:
           "بالنقر على 'إنشاء حساب مجاني' فإنك توافق على {{link=terms}}شروط الخدمة{{/link}} و{{link=privacy}}سياسة الخصوصية{{/link}} لـPuter.",
       transparency: "الشفافية",

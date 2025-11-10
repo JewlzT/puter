@@ -23,6 +23,7 @@ import UIWindowChangeUsername from '../UIWindowChangeUsername.js';
 import UIWindowConfirmUserDeletion from './UIWindowConfirmUserDeletion.js';
 import UIWindowManageSessions from '../UIWindowManageSessions.js';
 import UIWindow from '../UIWindow.js';
+import UIAlert from '../UIAlert.js';
 
 // About
 export default {
@@ -37,6 +38,10 @@ export default {
         h += `<div style="overflow: hidden; display: flex; margin-bottom: 20px; flex-direction: column; align-items: center;">`;
             h += `<div class="profile-picture change-profile-picture" style="background-image: url('${html_encode(window.user?.profile?.picture ?? window.icons['profile.svg'])}');">`;
             h += `</div>`;
+            // load remove profile button on html refresh
+            if (window.user.profile.picture) {
+                h += `<button class="button button-small remove-profile-picture" style="margin-top: 10px;">${i18n('remove_profile_picture')}</button>`;
+            }
         h += `</div>`;
 
         // change password button
@@ -84,6 +89,34 @@ export default {
         return h;
     },
     init: ($el_window) => {
+        // function for removing profile picture
+        const removeProfilePicture = async function() {
+            // user confirmation
+            const alert_resp = await UIAlert({
+                message: i18n('confirm_delete_single_item'),
+                buttons: [
+                    {
+                        label: i18n('delete'),
+                        type: 'primary',
+                    },
+                    {
+                        label: i18n('cancel'),
+                    },
+                ]
+            });
+            
+            if (alert_resp === i18n('delete')) {
+                const default_image = window.icons['profile.svg'];
+                $el_window.find('.profile-picture').css('background-image', `url('${default_image}')`);
+                $('.profile-image').css('background-image', `url('${default_image}')`);
+                $('.profile-image').removeClass('profile-image-has-picture');
+                update_profile(window.user.username, {picture: null});
+                window.user.profile.picture = null;
+                // hide remove button
+                $el_window.find('.remove-profile-picture').hide();
+            }
+        };
+
         $el_window.find('.change-password').on('click', function (e) {
             UIWindowChangePassword({
                 window_options:{
@@ -149,6 +182,8 @@ export default {
                 selectable_body: false,
             });    
         })
+        // event delegation for remove profile pic buttons
+        $el_window.on('click', '.remove-profile-picture', removeProfilePicture);
 
         $el_window.on('file_opened', async function(e){
             let selected_file = Array.isArray(e.detail) ? e.detail[0] : e.detail;
@@ -173,7 +208,18 @@ export default {
                     $('.profile-image').css('background-image', 'url(' + html_encode(base64data) + ')');
                     $('.profile-image').addClass('profile-image-has-picture');
                     // update profile picture
-                    update_profile(window.user.username, {picture: base64data})
+                    update_profile(window.user.username, {picture: base64data});
+                    
+                    // show or create the remove button
+                    let remove_button = $el_window.find('.remove-profile-picture');
+                    // button doesn't exist, create it
+                    if (remove_button.length === 0) {
+                        const button_html = `<button class="button button-small remove-profile-picture" style="margin-top: 10px;">${i18n('remove_profile_picture')}</button>`;
+                        $el_window.find('.profile-picture').parent().append(button_html);
+                    } else {
+                        // button exists and is hidden
+                        remove_button.show();
+                    }
                 }
             }
         })
