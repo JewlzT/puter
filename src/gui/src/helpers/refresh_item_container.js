@@ -228,6 +228,11 @@ const refresh_item_container = function(el_item_container, options){
                 $(el_item_container).attr('data-sort_order')
             );
 
+            // Apply desktop icon visibility after all items are rendered
+            if($(el_item_container).hasClass('desktop')){
+                window.show_or_hide_desktop_icons(el_item_container);
+            }
+
             if(options.fadeInItems)
                 $(el_item_container).animate({'opacity': '1'});
 

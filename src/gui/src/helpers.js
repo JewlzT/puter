@@ -2692,17 +2692,3 @@ window.get_profile_picture = async function(username){
 
     return icon;
 }
-
-window.refresh_item_container = function(item_container, options){
-    // Determine if the item_container is for the desktop
-    const is_desktop = $(item_container).hasClass('desktop');
-
-    // Refresh logic for the item container
-    // ...
-
-    // At the very end of the function, after all items are rendered:
-    // Apply desktop icon visibility if this is the desktop container
-    if (is_desktop) {
-        window.show_or_hide_desktop_icons(item_container);
-    }
-}
