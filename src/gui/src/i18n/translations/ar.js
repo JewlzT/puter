@@ -252,6 +252,7 @@ const ar = {
       refresh: "تحديث",
       release_address_confirmation: "هل أنت متأكد أنك تريد تحرير هذا العنوان؟",
       remove_from_taskbar: "إزالة من شريط المهام",
+      remove_profile_picture: "إزالة صورة الملف الشخصي",
       rename: "إعادة تسمية",
       repeat: "تكرار",
       replace: "استبدال",
@@ -288,6 +289,7 @@ const ar = {
       share_with: "مشاركة مع:",
       shortcut_to: "اختصار إلى",
       show_all_windows: "عرض جميع النوافذ",
+      show_desktop_icons: "Show desktop icons",
       show_hidden: "إظهار المخفي",
       sign_in_with_puter: "تسجيل الدخول باستخدام Puter",
       sign_up: "تسجيل",
@@ -307,6 +309,7 @@ const ar = {
       taskmgr_header_type: "النوع",
       terms: "الشروط",
       text_document: "مستند نصي",
+      toolbar_autohide: "إخفاء شريط الأدوات",
       tos_fineprint:
           "بالنقر على 'إنشاء حساب مجاني' فإنك توافق على {{link=terms}}شروط الخدمة{{/link}} و{{link=privacy}}سياسة الخصوصية{{/link}} لـPuter.",
       transparency: "الشفافية",
