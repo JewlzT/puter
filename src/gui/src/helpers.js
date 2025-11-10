@@ -780,6 +780,17 @@ window.show_or_hide_files = (item_containers) => {
         .removeClass(class_to_remove).addClass(class_to_add);
 }
 
+window.show_or_hide_desktop_icons = (desktop_container) => {
+    const show_desktop_icons = window.user_preferences.show_desktop_icons;
+    
+    // Show and hide desktop items
+    if (show_desktop_icons) {
+        $(desktop_container).find('.item').removeClass('desktop-item-hidden');
+    } else {
+        $(desktop_container).find('.item').addClass('desktop-item-hidden');
+    }
+}
+
 window.create_folder = async(basedir, appendto_element)=>{
 	let dirname = basedir;
     let folder_name = 'New Folder';
@@ -2680,4 +2691,18 @@ window.get_profile_picture = async function(username){
     }
 
     return icon;
+}
+
+window.refresh_item_container = function(item_container, options){
+    // Determine if the item_container is for the desktop
+    const isDesktop = $(item_container).hasClass('desktop');
+
+    // Refresh logic for the item container
+    // ...
+
+    // At the very end of the function, after all items are rendered:
+    // Apply desktop icon visibility if this is the desktop container
+    if (isDesktop) {
+        window.show_or_hide_desktop_icons(item_container);
+    }
 }

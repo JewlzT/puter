@@ -11,6 +11,7 @@ const gui_cache_keys = [
     'user_preferences.language',
     'user_preferences.clock_visible',
     'user_preferences.toolbar_autohide',
+    'user_preferences.show_desktop_icons',
     'has_seen_welcome_window',
 ];
 

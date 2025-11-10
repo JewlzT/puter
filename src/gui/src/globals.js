@@ -100,6 +100,7 @@ if (window.user_preferences === null) {
         language: navigator.language.split("-")[0] || navigator.userLanguage || 'en',
         clock_visible: 'auto',
         toolbar_autohide: false,
+        show_desktop_icons: true
     }
 }
 
