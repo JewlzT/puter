@@ -99,6 +99,8 @@ if (window.user_preferences === null) {
         show_hidden_files: false,
         language: navigator.language.split("-")[0] || navigator.userLanguage || 'en',
         clock_visible: 'auto',
+        toolbar_autohide: false,
+        show_desktop_icons: true
     }
 }
 

@@ -780,6 +780,17 @@ window.show_or_hide_files = (item_containers) => {
         .removeClass(class_to_remove).addClass(class_to_add);
 }
 
+window.show_or_hide_desktop_icons = (desktop_container) => {
+    const show_desktop_icons = window.user_preferences.show_desktop_icons;
+    
+    // Show and hide desktop items
+    if (show_desktop_icons) {
+        $(desktop_container).find('.item').removeClass('desktop-item-hidden');
+    } else {
+        $(desktop_container).find('.item').addClass('desktop-item-hidden');
+    }
+}
+
 window.create_folder = async(basedir, appendto_element)=>{
 	let dirname = basedir;
     let folder_name = 'New Folder';
