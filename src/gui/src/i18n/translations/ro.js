@@ -265,6 +265,7 @@ const ro = {
         send_password_recovery_email: "Trimite mail de recuperare parolă",
         session_saved: "Vă mulțumim pentru crearea unui cont. Această sesiune a fost salvată.",
         settings: "Setări",
+        set_as_desktop_background: "Set as Desktop Background",
         set_new_password: "Setează o parolă Nouă",
         share: "Distribuie",
         share_to: "Distribuie către",

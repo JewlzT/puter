@@ -138,6 +138,7 @@ const nn = {
         send: "Send",
         send_password_recovery_email: "Send e-post for gjenoppretting av passord",
         session_saved: "Takk for at du oppretta ein konto. Denne økta er lagra.",
+        set_as_desktop_background: "Set as Desktop Background",
         set_new_password: "Set nytt passord",
         share_to: "Del",
         show_all_windows: "Vis alle vindauge",

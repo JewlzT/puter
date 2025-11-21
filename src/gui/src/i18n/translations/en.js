@@ -268,6 +268,7 @@ const en = {
         send_password_recovery_email: "Send Password Recovery Email",
         session_saved: "Thank you for creating an account. This session has been saved.",
         settings: "Settings",
+        set_as_desktop_background: "Set as Desktop Background",
         set_new_password: "Set New Password",
         share: "Share",
         share_to: "Share to",

@@ -295,6 +295,7 @@ const ru = {
     session_saved:
       'Благодарим вас за создание учетной записи. Этот сеанс сохранен.',
     settings: 'Настройки',
+    set_as_desktop_background: "Set as Desktop Background",
     set_new_password: 'Установить новый пароль',
     share: 'Поделиться',
     share_to: 'Поделиться',

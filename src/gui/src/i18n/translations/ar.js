@@ -283,6 +283,7 @@ const ar = {
       send_password_recovery_email: "إرسال بريد استعادة كلمة المرور",
       session_saved: "شكرًا لإنشاء حساب. تم حفظ هذه الجلسة.",
       settings: "الإعدادات",
+      set_as_desktop_background: "Set as Desktop Background",
       set_new_password: "تعيين كلمة مرور جديدة",
       share: "مشاركة",
       share_to: "مشاركة إلى",

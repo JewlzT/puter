@@ -265,6 +265,7 @@ const br = {
     "send_password_recovery_email": "Enviar E-mail de Recuperação de Senha",
     "session_saved": "Obrigado por criar uma conta. Esta sessão foi salva.",
     "settings": "Configurações",
+    "set_as_desktop_background": "Set as Desktop Background",
     "set_new_password": "Definir Nova Senha",
     "share": "Compartilhar",
     "share_to": "Compartilhar para",

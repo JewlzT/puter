@@ -265,6 +265,7 @@ const nl = {
 		send_password_recovery_email: 'Wachtwoordherstelsmail verzenden',
 		session_saved: 'Bedankt voor het aanmaken van een account. Deze sessie is opgeslagen.',
 		settings: 'Instellingen',
+		set_as_desktop_background: "Set as Desktop Background",
 		set_new_password: 'Nieuw wachtwoord instellen',
 		share: 'Delen',
 		share_to: 'Delen met',

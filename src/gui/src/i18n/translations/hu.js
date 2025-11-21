@@ -260,6 +260,7 @@ const hu = {
         send_password_recovery_email: "Jelszó visszaállító email küldése",
         session_saved: "Köszönjük, hogy létrehoztál egy fiókot. Ez a munkamenet mentésre került.",
         settings: "Beállítások",
+        set_as_desktop_background: "Set as Desktop Background",
         set_new_password: "Új jelszó beállítása",
         share: "Megosztás",
         share_to: "Megosztás ide:",

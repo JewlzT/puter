@@ -265,6 +265,7 @@ const sv = {
         send_password_recovery_email: "Skicka e-post för återställning av lösenord",
         session_saved: "Tack för att du skapade ett konto. Denna session är sparad.",
         settings: "Inställningar",
+        set_as_desktop_background: "Set as Desktop Background",
         set_new_password: "Ange nytt lösenord",
         share: "Dela",
         share_to: "Dela till",

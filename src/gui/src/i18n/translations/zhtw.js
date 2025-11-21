@@ -264,6 +264,7 @@ const zhtw = {
         send_password_recovery_email: "發送密碼恢復電子郵件",
         session_saved: "感謝您建立帳戶。此工作階段已儲存。",
         settings: "設定",
+        set_as_desktop_background: "Set as Desktop Background",
         set_new_password: "設定新密碼",
         share: "分享",
         share_to: "分享到",

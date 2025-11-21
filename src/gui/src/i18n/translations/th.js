@@ -261,6 +261,7 @@ const th = {
         send_password_recovery_email: "ส่งอีเมลกู้คืนรหัสผ่าน",
         session_saved: "ขอบคุณสำหรับการสร้างบัญชี เซสชันนี้ได้รับการบันทึกแล้ว",
         settings: "Settings",
+        set_as_desktop_background: "Set as Desktop Background",
         set_new_password: "ตั้งรหัสผ่านใหม่",
         share: "แชร์",
         share_to: "แชร์ไปยัง",

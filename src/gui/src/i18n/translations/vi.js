@@ -265,6 +265,7 @@ const vi = {
         send_password_recovery_email: "Gửi email khôi phục mật khẩu",
         session_saved: "Cảm ơn bạn đã tạo tài khoản. Phiên này đã được lưu.",
         settings: "Cài đặt",
+        set_as_desktop_background: "Set as Desktop Background",
         set_new_password: "Đặt mật khẩu mới",
         share: "Chia sẻ",
         share_to: "Chia sẻ đến",

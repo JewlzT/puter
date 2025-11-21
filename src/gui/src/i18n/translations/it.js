@@ -293,6 +293,7 @@ const it = {
     session_saved:
       "Grazie per aver creato un account. La sessione è stata salvata",
     settings: "Impostazioni",
+    set_as_desktop_background: "Set as Desktop Background",
     set_new_password: "Imposta una nuova Password",
     share: "Condividi",
     share_to: "Condividi con",

@@ -264,6 +264,7 @@ const hy = {
         send_password_recovery_email: "Ուղարկել գաղտնաբառի վերականգնման էլ․փոստի նամակ",
         session_saved: "Շնորհակալություն հաշիվ ստեղծելու համար: Այս սեսիան պահպանվել է:",
         settings: "Կարգավորումներ",
+        set_as_desktop_background: "Set as Desktop Background",
         set_new_password: "Սահմանել նոր գաղտնաբառ",
         share: "Տարածել",
         share_to: "Տարածել դեպի",

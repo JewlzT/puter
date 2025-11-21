@@ -264,6 +264,7 @@ const hi = {
         send_password_recovery_email: "पासवर्ड पुनर्प्राप्ति ईमेल भेजें",
         session_saved: "खाता बनाने के लिए धन्यवाद. यह सत्र सहेजा गया है",
         settings: "समायोजन",
+        set_as_desktop_background: "Set as Desktop Background",
         set_new_password: "नया पासवर्ड सेट करें",
         share: "आदान-प्रदान",
         share_to: "साझा",

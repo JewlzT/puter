@@ -267,6 +267,7 @@ const bn = {
     send_password_recovery_email: "পাসওয়ার্ড পুনরুদ্ধারের ইমেল প্রেরণ করুন",
     session_saved: "অ্যাকাউন্ট তৈরি করার জন্য ধন্যবাদ। এই সেশনটি সংরক্ষিত হয়েছে।",
     settings: "সেটিংস",
+    set_as_desktop_background: "Set as Desktop Background",
     set_new_password: "নতুন পাসওয়ার্ড সেট করুন",
     share: "শেয়ার করুন",
     share_to: "শেয়ার করুন প্রতি",

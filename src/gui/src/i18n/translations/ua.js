@@ -268,6 +268,7 @@ const ua = {
         send_password_recovery_email: "Надіслати електронний лист для відновлення пароля",
         session_saved: "Дякуємо вам за створення облікового запису. Цей сеанс збережено.",
         settings: "Налаштування",
+        set_as_desktop_background: "Set as Desktop Background",
         set_new_password: "Встановити Новий Пароль",
         share: "Поділитися",
         share_to: "Поділитися з",
