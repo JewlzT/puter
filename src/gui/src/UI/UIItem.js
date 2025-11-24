@@ -974,11 +974,28 @@ function UIItem(options){
                         open_item({item: el_item});
                     }
                 });
+                
+                // -------------------------------------------
+                // Edit Link (for .weblink files)
+                // -------------------------------------------
+                if(options.name.endsWith('.weblink')){
+                    menu_items.push({
+                        html: 'Edit Link',
+                        onClick: async function(){
+                            await window.edit_weblink_file({
+                                item: el_item,
+                                uid: options.uid,
+                                path: options.path,
+                                name: options.name
+                            });
+                        }
+                    });
+                }
 
                 // -------------------------------------------
                 // -
                 // -------------------------------------------
-                if(options.associated_app_name || is_trash)
+                if(options.associated_app_name || is_trash || options.name.endsWith('.weblink'))
                     menu_items.push('-');
             }
             // -------------------------------------------

@@ -196,6 +196,7 @@ const ku = {
     new: "نوێ",
     new_email: "ئیمەیلی نوێ",
     new_folder: "فۆڵدەرێکی نوێ",
+    new_link: 'New link',
     new_password: "وشەی تێپەڕی نوێ",
     new_username: "ناوی بەکارهێنەری نوێ",
     no: "نەخێر",

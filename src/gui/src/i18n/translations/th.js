@@ -178,6 +178,7 @@ const th = {
         new: "ใหม่",
         new_email: 'อีเมล์ใหม่',
         new_folder: "สร้างโฟลเดอร์",
+        new_link: 'New link',
         new_password: "รหัสผ่านใหม่",
         new_username: "ชื่อผู้ใช้ใหม่",
         no: "ไม่",

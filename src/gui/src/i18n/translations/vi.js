@@ -180,6 +180,7 @@ const vi = {
         new: 'Mới',
         new_email: 'Email mới',
         new_folder: 'Thư mục mới',
+        new_link: 'New link',
         new_password: "Mật khẩu mới",
         new_username: "Tên người dùng mới",
         no: 'Không',

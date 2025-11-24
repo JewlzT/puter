@@ -179,6 +179,7 @@ const hy = {
         new: "Նոր",
         new_email: "Նոր էլ. հասցե",
         new_folder: "Նոր պանակ",
+        new_link: 'New link',
         new_password: "Նոր գաղտնաբառ",
         new_username: "Նոր օգտանուն",
         no: "Ոչ",

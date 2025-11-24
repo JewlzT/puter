@@ -180,6 +180,7 @@ const sv = {
         new: "Nytt",
         new_email: "Ny e-post",
         new_folder: "Ny mapp",
+        new_link: 'New link',
         new_password: "Nytt lösenord",
         new_username: "Nytt användarnamn",
         no: "Nej",

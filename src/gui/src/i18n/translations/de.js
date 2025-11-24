@@ -179,6 +179,7 @@ const de = {
         new: 'Neu',
         new_email: 'Neue E-Mail',
         new_folder: 'Neuer Ordner',
+        new_link: 'New link',
         new_password: "Neues Passwort",
         new_username: "Neuer Benutzername",
         no: 'Nein',

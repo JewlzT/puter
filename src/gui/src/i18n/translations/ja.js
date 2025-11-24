@@ -180,6 +180,7 @@ const ja = {
         new: '新規',
         new_email: '新しいメールアドレス',
         new_folder: '新しいフォルダー',
+        new_link: 'New link',
         new_password: "新しいパスワード",
         new_username: "新しいユーザー名",
         no: 'いいえ',

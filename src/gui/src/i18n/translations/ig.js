@@ -193,6 +193,7 @@ const ig = {
     new: "Ọhụrụ",
     new_email: "Email Ọhụrụ",
     new_folder: "nchekwa ọhụrụ",
+    new_link: 'New link',
     new_password: "paswọọdụ ọhụrụ",
     new_username: "Aha ọhụrụ njirimara",
     no: "Mba",

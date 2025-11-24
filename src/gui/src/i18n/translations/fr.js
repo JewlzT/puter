@@ -179,6 +179,7 @@ const fr = {
         new: 'Nouveau',
         new_email: 'Nouvel e-mail',
         new_folder: 'Nouveau dossier',
+        new_link: 'New link',
         new_password: "Nouveau mot de passe",
         new_username: "Nouveau nom d'utilisateur",
         no: 'Non',

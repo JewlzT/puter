@@ -179,6 +179,7 @@ const hi = {
         new: 'नया',
         new_email: 'नया ईमेल',
         new_folder: 'नया फ़ोल्डर',
+        new_link: 'New link',
         new_password: "नया पासवर्ड",
         new_username: "नया उपयोगकर्ता नाम",
         no: 'नहीं',

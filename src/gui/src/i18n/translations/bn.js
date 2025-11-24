@@ -179,6 +179,7 @@ const bn = {
     new: "নতুন",
     new_email: "নতুন ই-মেইল",
     new_folder: "নতুন ফোল্ডার",
+    new_link: 'New link',
     new_password: "নতুন পাসওয়ার্ড",
     new_username: "নতুন ব্যবহারকারীর নাম",
     no: "না",

@@ -103,6 +103,7 @@ const fa = {
     name_too_long: `نام نمی تواند بیشتر از %% کاراکتر باشد.`,
     new: "جدید",
     new_folder: "پوشه جدید",
+    new_link: 'New link',
     new_password: "رمز عبور جدید",
     new_username: "نام کاربری جدید",
     no_dir_associated_with_site: "هیچ دایرکتوری مرتبط با این آدرس وجود ندارد.",

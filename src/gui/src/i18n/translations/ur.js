@@ -184,6 +184,7 @@ const ur = {
     new: "نیا",
     new_email: "نیا ای میل",
     new_folder: "نیا فولڈر ",
+    new_link: 'New link',
     new_password: "نیا پاس ورڈ ",
     new_username: "نیا صارف کا نام ",
     no: "نہیں",

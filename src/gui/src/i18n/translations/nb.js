@@ -104,6 +104,7 @@ const nb = {
         name_too_long: "Navn kan ikke være lengre enn %% tegn.",
         new: "Ny",
         new_folder: "Ny mappe",
+        new_link: 'New link',
         new_password: "Nytt passord",
         new_username: "Nytt brukernavn",
         no: 'Nei',

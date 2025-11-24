@@ -95,6 +95,7 @@ const nn = {
         name_too_long: "Namn kan ikkje vere lengre enn %% teikn.",
         new: "Ny",
         new_folder: "Ny mappe",
+        new_link: 'New link',
         new_password: "Nytt passord",
         new_username: "Nytt brukarnamn",
         no_dir_associated_with_site: "Ingen mappe er tilknytt denne adressa.",

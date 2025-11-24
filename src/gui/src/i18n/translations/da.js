@@ -179,6 +179,7 @@ const da = {
 		new: 'Ny',
 		new_email: 'Ny e-mail',
 		new_folder: 'Ny mappe',
+		new_link: 'New link',
 		new_password: 'Ny adgangskode',
 		new_username: 'Nyt brugernavn',
 		no: 'Nej',

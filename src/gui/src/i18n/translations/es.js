@@ -204,6 +204,7 @@ const es = {
     new: 'Nuevo',
     new_email: 'Nuevo correo electrónico',
     new_folder: 'Nueva carpeta',
+    new_link: 'New link',
     new_password: 'Nueva contraseña',
     new_username: 'Nuevo nombre de usuario',
     no: 'No',

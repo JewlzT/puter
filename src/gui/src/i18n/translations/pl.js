@@ -179,6 +179,7 @@ const pl = {
         new: 'Nowy',
         new_email: 'Nowy email',
         new_folder: 'Nowy folder',
+        new_link: 'New link',
         new_password: "Nowe hasło",
         new_username: "Nowa nazwa użytkownika",
         no: 'Nie',

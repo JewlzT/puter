@@ -235,6 +235,7 @@ const fi = {
     new: "Uusi",
     new_email: "New Email",
     new_folder: "Uusi kansio",
+    new_link: 'New link',
     new_password: "Uusi salasana",
     new_username: "Uusi käyttäjänimi",
     no: "Ei",

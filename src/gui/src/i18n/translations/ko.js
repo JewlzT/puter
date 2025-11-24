@@ -192,6 +192,7 @@ const ko = {
     new: "새로 만들기",
     new_email: "새 이메일",
     new_folder: "새 폴더",
+    new_link: 'New link',
     new_password: "새 비밀번호",
     new_username: "새 사용자 이름",
     no: "아니오",

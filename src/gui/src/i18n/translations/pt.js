@@ -181,6 +181,7 @@ const pt = {
         new: 'Novo',
         new_email: 'New Email',
         new_folder: 'Nova Pasta',
+        new_link: 'New link',
         new_password: "Nova Password",
         new_username: "Novo Nome de Utilizador",
         no: 'Não',

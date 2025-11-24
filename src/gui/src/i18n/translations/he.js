@@ -190,6 +190,7 @@ const en = {
     new: "חדש",
     new_email: "אימייל חדש",
     new_folder: "תיקייה חדשה",
+    new_link: 'New link',
     new_password: "סיסמה חדשה",
     new_username: "שם משתמש חדש",
     no: "לא",

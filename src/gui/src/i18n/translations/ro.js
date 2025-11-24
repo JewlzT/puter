@@ -180,6 +180,7 @@ const ro = {
         new: 'Nou',
         new_email: "E-mail nou",
         new_folder: 'Folder nou',
+        new_link: 'New link',
         new_password: "Parolă nouă",
         new_username: "Nume de Utilizator nou",
         no: "Nu",

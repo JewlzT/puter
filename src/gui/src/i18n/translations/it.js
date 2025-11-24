@@ -195,6 +195,7 @@ const it = {
     new: "Nuovo",
     new_email: "Nuova Email",
     new_folder: "Nuova Cartella",
+    new_link: 'New link',
     new_password: "Nuova Password",
     new_username: "Nuovo Nome Utente",
     no: "No",

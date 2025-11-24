@@ -180,6 +180,7 @@ const br = {
     new: 'Novo',
     new_email: 'Novo Email',
     new_folder: 'Nova pasta',
+    new_link: 'New link',
     new_password: "Nova Senha",
     new_username: "Novo Nome de Usuário",
     "no": "Não",

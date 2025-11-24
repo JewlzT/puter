@@ -179,6 +179,7 @@ const tr = {
         new: "Yeni",
         new_email: "Yeni E-Posta",
         new_folder: "Yeni klasör",
+        new_link: 'New link',
         new_password: "Yeni Parola",
         new_username: "Yeni Kullanıcı Adı",
         no: "Hayır",

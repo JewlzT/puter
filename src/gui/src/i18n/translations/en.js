@@ -182,6 +182,7 @@ const en = {
         new: 'New',
         new_email: 'New Email',
         new_folder: 'New folder',
+        new_link: 'New link',
         new_password: "New Password",
         new_username: "New Username",
         no: 'No',

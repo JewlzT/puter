@@ -178,6 +178,7 @@ const ta = {
         new: 'புதியது',
         new_email: 'புதிய மின்னஞ்சல்',
         new_folder: 'புதிய அடைவை',
+        new_link: 'New link',
         new_password: "புதிய கடவுச்சொல்",
         new_username: "புதிய பயனர் பெயர்",
         no: 'இல்லை',

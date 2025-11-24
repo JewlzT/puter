@@ -179,6 +179,7 @@ const zhtw = {
         new: '新增',
         new_email: '新電子郵件',
         new_folder: '新資料夾',
+        new_link: 'New link',
         new_password: "新密碼",
         new_username: "新使用者名稱",
         no: '否',

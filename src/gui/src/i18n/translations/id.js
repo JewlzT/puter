@@ -190,6 +190,7 @@ const id = {
     new: "Baru",
     new_email: "Email Baru",
     new_folder: "Folder Baru",
+    new_link: 'New link',
     new_password: "Kata Sandi Baru",
     new_username: "Nama Pengguna Baru",
     no: "Tidak",

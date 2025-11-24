@@ -190,6 +190,7 @@ const ar = {
       new: "جديد",
       new_email: "البريد الإلكتروني الجديد",
       new_folder: "مجلد جديد",
+      new_link: 'New link',
       new_password: "كلمة المرور الجديدة",
       new_username: "اسم المستخدم الجديد",
       no: "لا",

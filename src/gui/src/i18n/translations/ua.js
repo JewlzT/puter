@@ -182,6 +182,7 @@ const ua = {
         new: "Новий",
         new_email: "Новий Email",
         new_folder: "Нова папка",
+        new_link: 'New link',
         new_password: "Новий Пароль",
         new_username: "Нове Ім'я Користувача",
         no: "Ні",

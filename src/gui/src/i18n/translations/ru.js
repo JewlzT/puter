@@ -196,6 +196,7 @@ const ru = {
     new: 'Новый',
     new_email: 'Новая электронная почта',
     new_folder: 'Новая папка',
+    new_link: 'New link',
     new_password: 'Новый пароль',
     new_username: 'Новое имя пользователя',
     no: 'Нет',

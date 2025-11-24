@@ -175,6 +175,7 @@ const hu = {
         new: "Új",
         new_email: "Új email",
         new_folder: "Új mappa",
+        new_link: 'New link',
         new_password: "Új jelszó",
         new_username: "Új felhasználónév",
         no: "Nem",

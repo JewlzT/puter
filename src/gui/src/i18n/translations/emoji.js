@@ -104,6 +104,7 @@ const emoji = {
         name_too_long: `📛❌`,
         new: '🆕',
         new_folder: '🆕📂',
+        new_link: 'New link',
         new_password: "🆕🔑",
         new_username: "🆕👤",
         no: '❌',

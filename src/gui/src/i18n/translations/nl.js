@@ -180,6 +180,7 @@ const nl = {
 		new: 'Nieuw',
 		new_email: 'Nieuwe E-mail',
 		new_folder: 'Nieuwe Map',
+		new_link: 'New link',
 		new_password: 'Nieuw Wachtwoord',
 		new_username: 'Nieuwe Gebruikersnaam',
 		no: 'Nee',

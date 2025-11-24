@@ -180,6 +180,7 @@ const zh = {
         new: '新',
         new_email: '新邮箱',
         new_folder: '新文件夹',
+        new_link: 'New link',
         new_password: "新密码",
         new_username: "新用户名",
         no: '取消',
