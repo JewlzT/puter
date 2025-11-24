@@ -235,6 +235,7 @@ const fi = {
     new: "Uusi",
     new_email: "New Email",
     new_folder: "Uusi kansio",
+    new_link: 'New link',
     new_password: "Uusi salasana",
     new_username: "Uusi käyttäjänimi",
     no: "Ei",
@@ -306,6 +307,7 @@ const fi = {
     // "publish" => "Oletko varma, että haluat julkaista tämän osoitteen?"
 
     remove_from_taskbar: "Poista tehtäväpalkista",
+    remove_profile_picture: 'Poista profiilikuva',
     rename: "Nimeä uudelleen",
     repeat: "Toista",
     replace: "Replace",
@@ -338,6 +340,7 @@ const fi = {
     send_password_recovery_email: "Lähetä salasanan palautussähköposti",
     session_saved: "Kiitos tilin luomisesta. Tämä istunto on tallennettu.",
     settings: "Asetukset",
+    set_as_desktop_background: "Set as Desktop Background",
     set_new_password: "Aseta uusi salasana",
     share: "Jaa",
 
@@ -348,6 +351,7 @@ const fi = {
     share_with: "Jaa:",
     shortcut_to: "Pikakuvake",
     show_all_windows: "Näytä kaikki ikkunat",
+    show_desktop_icons: "Show desktop icons",
     show_hidden: "Näytä piilotetut",
     sign_in_with_puter: "Kirjaudu sisään Puterilla",
     sign_up: "Rekisteröidy",
@@ -368,6 +372,7 @@ const fi = {
     taskmgr_header_type: "Tyyppi",
     terms: "Ehdot",
     text_document: "Tekstiasiakirja",
+    toolbar_autohide: "Piilota Työkalurivi",
     tos_fineprint: `Klikkaamalla 'Luo ilmainen tili' hyväksyt Puterin {{link=terms}}käyttöehdot{{/link}} ja {{link=privacy}}tietosuojakäytännön{{/link}}.`,
     transparency: "Läpinäkyvyys",
 

@@ -106,6 +106,10 @@ const item_icon = async (fsentry)=>{
     // --------------------------------------------------
     // Match icon by file extension
     // --------------------------------------------------
+    // *.weblink
+    else if(fsentry.name.toLowerCase().endsWith('.weblink')){
+        return {image: window.icons['link.svg'], type: 'icon'};
+    }
     // *.doc
     else if(fsentry.name.toLowerCase().endsWith('.doc')){
         return {image: window.icons['file-doc.svg'], type: 'icon'};

@@ -48,6 +48,13 @@ export default {
                     <option value="show">${i18n('clock_visible_show')}</option>
                 </select>
             </div>
+            <div class="settings-card">
+                <strong style="flex-grow:1;">${i18n('toolbar_autohide')}</strong>
+                <label class="toggle-switch" style="margin-left: 10px;">
+                    <input type="checkbox" class="toggle-toolbar-autohide" ${window.user_preferences.toolbar_autohide ? 'checked' : ''}>
+                    <span class="toggle-switch-slider"></span>
+                </label>
+            </div>
             <div class="settings-card" style="display: block; height: auto;">
                 <strong style="margin: 15px 0 30px; display: block;">${i18n('menubar_style')}</strong>
                 <div style="flex-grow:1; margin-top: 10px;">
@@ -101,6 +108,18 @@ export default {
         });
 
         window.change_clock_visible();
+
+        // Add toolbar auto-hide toggle handler
+        $el_window.on('change', '.toggle-toolbar-autohide', function(e){
+            window.mutate_user_preferences({
+                toolbar_autohide: this.checked
+            });
+            
+            // Reinitialize the toolbar auto-hide system with new setting
+            if (window.toolbar_autohide) {
+                window.toolbar_autohide.init();
+            }
+        });
 
         puter.kv.get('menubar_style').then(async (val) => {
             if(val === 'system' || !val){
