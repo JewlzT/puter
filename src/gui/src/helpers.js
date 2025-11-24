@@ -987,6 +987,11 @@ window.edit_weblink_file = async (options) => {
             return;
         }
         
+        // Check if URL actually changed - if not, do nothing
+        if (new_URL.trim() === current_URL.trim()) {
+            return;
+        }
+        
         // Generate new filename from the new URL domain
         let new_filename;
         try {
