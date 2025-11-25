@@ -172,7 +172,7 @@ class PuterHomepageService extends BaseService {
             short_description,
             company,
             canonical_url,
-            social_media_image,
+            social_media_image: social_media_image_raw,
         } = meta;
 
         gui_params = {
@@ -192,6 +192,9 @@ class PuterHomepageService extends BaseService {
 
         const bundled = env != 'dev' || use_bundled_gui;
 
+        // validate social media image URL and file extension
+        let social_media_image = social_media_image_raw;
+        
         // if social media image is not a valid absolute URL, set it to null
         if (social_media_image && !is_valid_url(social_media_image)) {
             social_media_image = null;

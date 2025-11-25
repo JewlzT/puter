@@ -181,6 +181,11 @@ class QuickMkdir extends HLFilesystemOperation {
 
         parent = parent || await fs.node(new RootNodeSelector());
 
+        // Check if trying to create directory in root - not allowed
+        if ( parent.isRoot ) {
+            throw APIError.create('cannot_mkdir_to_root');
+        }
+
         let current = parent.selector;
 
         const dirs = path === '.' ? []
@@ -272,6 +277,11 @@ class HLMkdir extends HLFilesystemOperation {
         let parent_node = values.parent || await fs.node(new RootNodeSelector());
         console.log('USING PARENT', parent_node.selector.describe());
         let target_basename = _path.basename(values.path);
+
+        // Check if trying to create directory in root - not allowed
+        if ( parent_node.isRoot ) {
+            throw APIError.create('cannot_mkdir_to_root');
+        }
 
         const top_parent = values.create_missing_parents
             ? await this._create_top_parent({ top_parent: parent_node })

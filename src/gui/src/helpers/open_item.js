@@ -55,6 +55,26 @@ const open_item = async function(options){
         UIAlert(`This item can't be opened because it's in the trash. To use this item, first drag it out of the Trash.`)
     }
     //----------------------------------------------------------------
+    // Is this a .weblink file? Open URL in new tab
+    //----------------------------------------------------------------
+    else if(!is_dir && item_path.endsWith('.weblink')){
+        try {
+            const fileData = await puter.fs.read(uid);
+            const url = await fileData.text();
+            const trimmedUrl = url.trim();
+            
+            if (trimmedUrl) {
+                // Open URL in new browser tab
+                window.open(trimmedUrl, '_blank');
+            } else {
+                UIAlert('This link appears to be empty or corrupted.');
+            }
+        } catch (error) {
+            console.error('Error opening weblink:', error);
+            UIAlert('Failed to open the link. The file may be corrupted.');
+        }
+    }
+    //----------------------------------------------------------------
     // Is this a file (no dir) on a SaveFileDialog?
     //----------------------------------------------------------------
     else if($el_parent_window.attr('data-is_saveFileDialog') === 'true' && !is_dir){

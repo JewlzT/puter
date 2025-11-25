@@ -39,6 +39,15 @@ export const DEFAULT_TRUNCATE_LENGTH = 20;
  */
 const truncate_filename = (input, max_length = DEFAULT_TRUNCATE_LENGTH) => {
     const extname = path.extname('/' + input);
+    
+    // Hide .weblink extension in UI display
+    if (extname === '.weblink') {
+        const nameWithoutWeblink = input.slice(0, -8); // Remove .weblink
+        if ((nameWithoutWeblink.length - 15) > max_length) {
+            return nameWithoutWeblink.substring(0, max_length) + '…';
+        }
+        return nameWithoutWeblink;
+    }
 
     if ((input.length - 15)  > max_length){
         if(extname !== '')

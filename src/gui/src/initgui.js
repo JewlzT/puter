@@ -44,6 +44,7 @@ import UIComponentWindow from './UI/UIComponentWindow.js';
 import update_mouse_position from './helpers/update_mouse_position.js';
 import { LaunchOnInitService } from './services/LaunchOnInitService.js';
 import item_icon from './helpers/item_icon.js';
+import './helpers/toolbar_autohide.js'
 import { AntiCSRFService } from './services/AntiCSRFService.js';
 import { IPCService } from './services/IPCService.js';
 import { ExecService } from './services/ExecService.js';
@@ -225,6 +226,9 @@ window.initgui = async function(options){
 
     // Launch services before any UI is rendered
     await launch_services(options);
+
+    // Initialize toolbar auto-hide user preference
+    window.toolbar_autohide.init();
 
     //--------------------------------------------------------------------------------------
     // Is GUI embedded in a popup?
