@@ -974,11 +974,28 @@ function UIItem(options){
                         open_item({item: el_item});
                     }
                 });
+                
+                // -------------------------------------------
+                // Edit Link (for .weblink files)
+                // -------------------------------------------
+                if(options.name.endsWith('.weblink')){
+                    menu_items.push({
+                        html: 'Edit Link',
+                        onClick: async function(){
+                            await window.edit_weblink_file({
+                                item: el_item,
+                                uid: options.uid,
+                                path: options.path,
+                                name: options.name
+                            });
+                        }
+                    });
+                }
 
                 // -------------------------------------------
                 // -
                 // -------------------------------------------
-                if(options.associated_app_name || is_trash)
+                if(options.associated_app_name || is_trash || options.name.endsWith('.weblink'))
                     menu_items.push('-');
             }
             // -------------------------------------------
@@ -1205,6 +1222,85 @@ function UIItem(options){
                         window.unzipItem(filePath)
                     }
                 })
+            }
+            // -------------------------------------------
+            // Set as Desktop Background
+            // -------------------------------------------
+            if(!is_trash && !is_trashed && !options.is_dir){
+                // Check if it's an image file
+                try {
+                    const fsentry = await new Promise((resolve, reject) => {
+                        puter.fs.stat({ 
+                            uid: $(el_item).attr('data-uid'),
+                            success: resolve,
+                            error: reject
+                        });
+                    });
+                    
+                    // Only add menu item if it's an image file
+                    if(fsentry.type && fsentry.type.startsWith('image/')){
+                        // Create submenu items for different fit options
+                        const background_fit_options = [
+                            { fit: 'cover', label: i18n('cover') },
+                            { fit: 'contain', label: i18n('contain') }, 
+                            { fit: 'center', label: i18n('center') },
+                            { fit: 'repeat', label: i18n('repeat') }
+                        ];
+                        
+                        const fitItems = background_fit_options.map(option => ({
+                            html: option.label,
+                            // Set background image and preferred fit and save to server
+                            onClick: async function(){
+                                try {
+                                    const signed_file = await puter.fs.sign(window.host_app_uid, {
+                                        uid: $(el_item).attr('data-uid'),
+                                        action: 'read'
+                                    });
+                                    
+                                    const image_url = signed_file.items.read_url;
+                                    
+                                    window.set_desktop_background({
+                                        url: image_url,
+                                        fit: option.fit
+                                    });
+                                    
+                                    await $.ajax({
+                                        url: window.api_origin + "/set-desktop-bg",
+                                        type: 'POST',
+                                        data: JSON.stringify({ 
+                                            url: image_url,
+                                            fit: option.fit
+                                        }),
+                                        async: true,
+                                        contentType: "application/json",
+                                        headers: {
+                                            "Authorization": "Bearer "+window.auth_token
+                                        },
+                                        statusCode: {
+                                            401: function () {
+                                                window.logout();
+                                            },
+                                        },
+                                    });
+                                } catch(error) {
+                                    console.error('Error setting desktop background:', error);
+                                    UIAlert({
+                                        message: 'Failed to set desktop background. Please try again.',
+                                        type: 'error'
+                                    });
+                                }
+                            }
+                        }));
+
+                        menu_items.push({
+                            html: i18n('set_as_desktop_background'),
+                            items: fitItems
+                        });
+                    }
+                } catch(err) {
+                    // If we can't get file info, don't show the menu item
+                    console.warn('Could not get file info for background menu:', err);
+                }
             }
             // -------------------------------------------
             // Restore

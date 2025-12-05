@@ -731,6 +731,40 @@ $(document).bind("keyup keydown", async function(e){
     // ctrl/command + v, will paste items from the clipboard to the active element
     //----------------------------------------------
     if((e.ctrlKey || e.metaKey) && e.which === 86 && !$(focused_el).is('input') && !$(focused_el).is('textarea')){
+        if (navigator.clipboard && navigator.clipboard.readText) {
+            try {
+                const clipboard_text = await navigator.clipboard.readText();
+                const trimmed_text = clipboard_text.trim();
+                
+                // Check if clipboard contains a valid URL
+                if (trimmed_text && trimmed_text.match(/^https?:\/\/.+/) && trimmed_text.includes('.')) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    e.stopImmediatePropagation();
+                    
+                    let parent_container = determine_active_container_parent();
+                    if (parent_container) {
+                        const target_path = $(parent_container).attr('data-path');
+                        
+                        // Don't allow creating weblinks in Trash
+                        if (target_path === window.trash_path || target_path.startsWith(window.trash_path + '/')) {
+                            return false;
+                        }
+                        
+                        await window.create_weblink_file({
+                            url: trimmed_text,
+                            dirname: target_path,
+                            append_to_element: parent_container
+                        });
+                        
+                        return false;
+                    }
+                }
+            } catch (error) {
+                console.log(error + ': Could not read system clipboard, falling back to file paste');
+            }
+        }
+        
         let target_path, target_el;
 
         // continue only if there is something in the clipboard

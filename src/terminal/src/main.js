@@ -87,9 +87,12 @@ window.main_term = async () => {
 
     const phoenix = pos_args
         ? await puter.ui.launchApp(pos_args.shift(), {
-            command_line: { args: pos_args }
+            command_line: { args: pos_args },
+            background: true
           })
-        : await puter.ui.launchApp('phoenix') ;
+        : await puter.ui.launchApp('phoenix', {
+            background: true
+          }) ;
     shell.attachToApp(phoenix);
 
     // Close the shell when we exit

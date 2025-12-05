@@ -20,6 +20,7 @@
 import path from "./lib/path.js"
 import mime from "./lib/mime.js";
 import UIAlert from './UI/UIAlert.js'
+import UIPrompt from './UI/UIPrompt.js'
 import UIItem from './UI/UIItem.js'
 import UIWindowLogin from './UI/UIWindowLogin.js';
 import UIWindowSaveAccount from './UI/UIWindowSaveAccount.js';
@@ -780,6 +781,17 @@ window.show_or_hide_files = (item_containers) => {
         .removeClass(class_to_remove).addClass(class_to_add);
 }
 
+window.show_or_hide_desktop_icons = (desktop_container) => {
+    const show_desktop_icons = window.user_preferences.show_desktop_icons;
+    
+    // Show and hide desktop items
+    if (show_desktop_icons) {
+        $(desktop_container).find('.item').removeClass('desktop-item-hidden');
+    } else {
+        $(desktop_container).find('.item').addClass('desktop-item-hidden');
+    }
+}
+
 window.create_folder = async(basedir, appendto_element)=>{
 	let dirname = basedir;
     let folder_name = 'New Folder';
@@ -867,6 +879,159 @@ window.create_file = async(options)=>{
         });
     }catch(err){
         console.log(err);
+    }
+}
+
+window.show_url_input_dialog = async (options = {}) => {
+    const message = options.message || 'Enter the URL for the web link:';
+    const current_url_value = options.value || '';
+    
+    while (true) {
+        const url = await UIPrompt({
+            message: message,
+            placeholder: 'https://example.com',
+            value: current_url_value
+        });
+        
+        // User cancelled
+        if (url === false || url === null) {
+            return null;
+        }
+        
+        // Validate URL
+        const trimmed_URL = url.trim();
+        if (!trimmed_URL) {
+            await UIAlert('Please enter a URL');
+            continue;
+        }
+        
+        // Check if URL starts with http:// or https://
+        if (!trimmed_URL.match(/^https?:\/\//)) {
+            await UIAlert('URL must start with http:// or https://');
+            continue;
+        }
+        
+        // Use URL constructor for basic structure validation
+        try {
+            const url_obj = new URL(trimmed_URL);
+            
+            // Check that hostname contains at least one dot (for TLD validation)
+            if (!url_obj.hostname.includes('.')) {
+                await UIAlert('Please enter a valid URL with a domain name (e.g., https://example.com)');
+                continue;
+            }
+            
+            // URL is valid
+            return trimmed_URL;
+        } catch (error) {
+            await UIAlert('Please enter a valid URL (e.g., https://example.com)');
+            continue;
+        }
+    }
+}
+
+window.create_weblink_file = async (options) => {
+    const url = options.url;
+    const dirname = options.dirname;
+    const append_to_element = options.append_to_element;
+    
+    // Generate filename from URL domain
+    try {
+        const url_obj = new URL(url);
+        let domain = url_obj.hostname;
+        
+        // Remove 'www.' prefix if present
+        if (domain.startsWith('www.')) {
+            domain = domain.substring(4);
+        }
+        
+        // Create a clean filename
+        const filename = domain + '.weblink';
+        
+        // Create the .weblink file with the URL as content
+        await window.create_file({
+            dirname: dirname,
+            append_to_element: append_to_element,
+            name: filename,
+            content: url
+        });
+        
+    } catch (error) {
+        // If URL parsing fails, use a generic name
+        await window.create_file({
+            dirname: dirname,
+            append_to_element: append_to_element,
+            name: 'New Link.weblink',
+            content: url
+        });
+    }
+}
+
+window.edit_weblink_file = async (options) => {
+    const uid = options.uid;
+    const path = options.path;
+    
+    try {
+        // Read the current URL from the .weblink file
+        const file_data = await puter.fs.read(uid);
+        const current_URL = await file_data.text();
+        
+        // Use the URL input dialog with current URL pre-filled
+        const new_URL = await window.show_url_input_dialog({
+            message: 'Edit the URL for this link:',
+            value: current_URL.trim()
+        });
+        
+        // User cancelled
+        if (!new_URL) {
+            return;
+        }
+        
+        // Check if URL actually changed - if not, do nothing
+        if (new_URL.trim() === current_URL.trim()) {
+            return;
+        }
+        
+        // Generate new filename from the new URL domain
+        let new_filename;
+        try {
+            const url_obj = new URL(new_URL);
+            let domain = url_obj.hostname;
+            
+            // Remove 'www.' prefix if present
+            if (domain.startsWith('www.')) {
+                domain = domain.substring(4);
+            }
+            
+            new_filename = domain + '.weblink';
+        } catch (urlError) {
+            // If URL parsing fails, keep current filename
+            new_filename = path.split('/').pop();
+        }
+        
+        const parent_dir = path.substring(0, path.lastIndexOf('/'));
+        const current_filename = path.split('/').pop();
+        
+        // First delete the old file if filename is changing
+        if (new_filename !== current_filename) {
+            await puter.fs.delete({ paths: path });
+        }
+        
+        // Create/update the file using upload (similar to create_file pattern)
+        await puter.fs.upload(
+            new File([new_URL], new_filename), 
+            parent_dir,
+            {
+                overwrite: true,
+                success: async function (data) {
+                    // File was successfully updated - UI should automatically refresh
+                }
+            }
+        );
+        
+    } catch (error) {
+        await UIAlert('Failed to edit the link. Please try again.');
+        console.error('Error editing weblink:', error);
     }
 }
 
@@ -2236,9 +2401,9 @@ window.unzipItem = async function(itemPath) {
             let queuedFileWrites = []
             Object.keys(unzipped).forEach(fileItem => {
                 try {
-                    let fileData = new Blob([new Uint8Array(unzipped[fileItem], unzipped[fileItem].byteOffset, unzipped[fileItem].length)]);
+                    let file_data = new Blob([new Uint8Array(unzipped[fileItem], unzipped[fileItem].byteOffset, unzipped[fileItem].length)]);
                     progwin?.set_status(i18n('writing', fileItem));
-                    queuedFileWrites.push(new File([fileData], fileItem))
+                    queuedFileWrites.push(new File([file_data], fileItem))
                     currentProgress += perItemProgress;
                     progwin?.set_progress(currentProgress.toPrecision(2));
                 } catch (e) {

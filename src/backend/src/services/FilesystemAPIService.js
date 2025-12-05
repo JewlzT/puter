@@ -70,6 +70,40 @@ class FilesystemAPIService extends BaseService {
         app.use(require('../routers/df'))
 
     }
+
+    /**
+     * Test method for FilesystemAPIService
+     * Tests root directory mkdir protection functionality
+     */
+    _test({ assert }) {
+        const APIError = require('../api/APIError');
+
+        // Test 1: Verify cannot_mkdir_to_root error code exists
+        assert(() => {
+            return APIError.codes.hasOwnProperty('cannot_mkdir_to_root');
+        }, 'cannot_mkdir_to_root error code should be defined');
+
+        // Test 2: Verify error code has correct HTTP status (403 Forbidden)
+        assert(() => {
+            return APIError.codes.cannot_mkdir_to_root.status === 403;
+        }, 'cannot_mkdir_to_root should return 403 Forbidden status');
+
+        // Test 3: Verify error message is clear and descriptive
+        assert(() => {
+            const message = APIError.codes.cannot_mkdir_to_root.message;
+            return message && 
+                   message.toLowerCase().includes('cannot') &&
+                   message.toLowerCase().includes('create') &&
+                   message.toLowerCase().includes('root');
+        }, 'error message should clearly indicate mkdir is not allowed in root');
+
+        // Test 4: Verify APIError.create works properly for this error
+        assert(() => {
+            const error = APIError.create('cannot_mkdir_to_root');
+            return error.status === 403 && 
+                   error.message.includes('root directory');
+        }, 'APIError.create should generate proper 403 error for root mkdir');
+    }
 }
 
 module.exports = FilesystemAPIService;

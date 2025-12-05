@@ -58,7 +58,18 @@ export class PuterAppCommandProvider {
                     },
                     env: {...ctx.env},
                 };
+                
+                // Check if this is a background command
+                const is_background = ctx.locals.is_background_command;
+                if (is_background) {
+                    args.background = true;
+                }
                 const child = await puter.ui.launchApp(id, args);
+                
+                // For background commands, return immediately without waiting
+                if (is_background) {
+                    return { done: true };
+                }
 
                 const resize_listener = evt => {
                     child.postMessage({

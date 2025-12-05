@@ -215,14 +215,19 @@ export class ANSIShell extends EventTarget {
             return;
         }
 
+        // Check if this is a background command by looking for op.background token
+        const is_background_command = this.checkForBackgroundOperator(ast);
+        
         const executionCtx = this.ctx.sub({
             shell: this,
             vars: this.variables,
             env: this.env,
             locals: {
                 pwd: this.variables.pwd,
+                is_background_command: is_background_command,
             }
         });
+        
         
         const pipeline = await Pipeline.createFromAST(executionCtx, ast);
         
@@ -234,6 +239,37 @@ export class ANSIShell extends EventTarget {
         if ( this.ctx.locals.exit ) {
             this.ctx.externs.out.write(`Exited with code ${this.ctx.locals.exit}\n`);
         }
+    }
+
+    checkForBackgroundOperator (ast) {
+        // Recursively search the AST for op.background tokens
+        const searchNode = (node) => {
+            if (!node || typeof node !== 'object') return false;
+            
+            // Check if this node is a background operator
+            if (node.$ === 'op.background') {
+                return true;
+            }
+            
+            // Recursively search all properties
+            for (const key in node) {
+                if (key === '$') continue; // Skip the type identifier
+                
+                const value = node[key];
+                if (Array.isArray(value)) {
+                    for (const item of value) {
+                        if (searchNode(item)) return true;
+                    }
+                } else if (typeof value === 'object') {
+                    // Search nested objects
+                    if (searchNode(value)) return true;
+                }
+            }
+            
+            return false;
+        };
+        
+        return searchNode(ast);
     }
 
     expandPromptString (str) {

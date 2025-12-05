@@ -188,7 +188,7 @@ async function UIWindow(options) {
         if(user_set_url_params.length > 0)
             user_set_url_params = '?'+ user_set_url_params.join('&');
     }
-    h += `<div class="window window-active 
+    h += `<div class="window ${options.skip_auto_focus ? '' : 'window-active'} 
                         ${options.app === 'explorer' ? 'window-explorer' : ''}
                         ${options.cover_page ? 'window-cover-page' : ''}
                         ${options.uid !== undefined ? 'window-'+options.uid : ''} 
@@ -578,8 +578,13 @@ async function UIWindow(options) {
     if(options.is_dir && (options.path.split('/').length - 1) === 1 && options.path !== '/'+window.user.username){
         $(el_window_head_icon).attr('src', window.icons['shared.svg']);
     }
+    // Store background app flag for later reference
+    if (options.skip_auto_focus) {
+        $(el_window).data('skip_auto_focus', true);
+    }
+    
     // focus on this window and deactivate other windows
-    if ( options.is_visible ) {
+    if ( options.is_visible && !options.skip_auto_focus ) {
         $(el_window).focusWindow();
     }
 
@@ -1209,8 +1214,10 @@ async function UIWindow(options) {
     // set iframe url
     if (options.iframe_url){
         $(el_window_app_iframe).attr('src', options.iframe_url)
-        //bring focus to iframe
-        el_window_app_iframe.contentWindow.focus();
+        //bring focus to iframe, but not for background apps
+        if (!options.skip_auto_focus) {
+            el_window_app_iframe.contentWindow.focus();
+        }
     }
     // set the position of window
     if(!options.is_maximized){
@@ -3462,11 +3469,16 @@ $.fn.focusWindow = function(event) {
     if(this.hasClass('window')){
         const $app_iframe = $(this).find('.window-app-iframe');
         const win_id = $(this).attr('data-id');
-
+        
+        // Check if this is a background app that shouldn't be focused
+        const skip_auto_focus = $(this).data('skip_auto_focus');
+        
         // remove active class from all windows, except for this window
         $('.window').not(this).removeClass('window-active');
-        // add active class to this window
-        $(this).addClass('window-active');
+        // add active class to this window, but not for background apps
+        if (!skip_auto_focus) {
+            $(this).addClass('window-active');
+        }
         // disable pointer events on all windows' iframes, except for this window's iframe
         $('.window-app-iframe').not($app_iframe).css('pointer-events', 'none');
         // bring this window to front, only if it's not stay_on_top
@@ -3497,8 +3509,13 @@ $.fn.focusWindow = function(event) {
         // if this has an iframe
         else if(!$(this).hasClass('window-disabled') && $app_iframe.length > 0){
             $($app_iframe).css('pointer-events', 'all');
-            $app_iframe.get(0)?.focus({preventScroll:true});
-            $app_iframe.get(0)?.contentWindow?.focus({preventScroll:true});
+            
+            // Don't focus iframe for background apps
+            if (!skip_auto_focus) {
+                $app_iframe.get(0)?.focus({preventScroll:true});
+                $app_iframe.get(0)?.contentWindow?.focus({preventScroll:true});
+            }
+            
             // todo check if iframe is using SDK before sending messages
             $app_iframe.get(0).contentWindow.postMessage({msg: "focus"}, '*');
             var rect = $app_iframe.get(0).getBoundingClientRect();
