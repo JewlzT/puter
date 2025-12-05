@@ -65,6 +65,11 @@ export class PuterAppCommandProvider {
                     args.background = true;
                 }
                 const child = await puter.ui.launchApp(id, args);
+                
+                // For background commands, return immediately without waiting
+                if (is_background) {
+                    return { done: true };
+                }
 
                 const resize_listener = evt => {
                     child.postMessage({
