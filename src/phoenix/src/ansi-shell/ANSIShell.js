@@ -217,9 +217,6 @@ export class ANSIShell extends EventTarget {
 
         // Check if this is a background command by looking for op.background token
         const is_background_command = this.checkForBackgroundOperator(ast);
-        if (is_background_command) {
-            await this.ctx.externs.out.write('\x1B[33m[DEBUG] Background command detected\x1B[0m\n');
-        }
         
         const executionCtx = this.ctx.sub({
             shell: this,
