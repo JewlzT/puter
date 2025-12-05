@@ -1235,7 +1235,12 @@ window.initgui = async function(options){
             // is using the popover API to show a popover, the popover will be closed if the window is activated
             if($(e.target).hasClass('popover') || $(e.target).parents('.popover').length > 0)
                 return;
-            $(window.mouseover_window).focusWindow(e);
+                
+            // Check if this is a background app that shouldn't be auto-focused
+            const is_background_app = $(window.mouseover_window).data('skip_auto_focus');
+            if (!is_background_app) {
+                $(window.mouseover_window).focusWindow(e);
+            }
         }
     })
 

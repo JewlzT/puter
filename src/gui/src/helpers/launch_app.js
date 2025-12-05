@@ -51,6 +51,15 @@ const launch_app = async (options)=>{
     app_info.uuid = app_info.uuid ?? app_info.uid;
     app_info.uid = app_info.uid ?? app_info.uuid;
 
+    // Handle background vs foreground app
+    const is_background = options.background || options.args?.background;
+    if (is_background) {
+        app_info.background = true;
+    } else {
+        // Explicitly set as foreground app (overrides any default background setting)
+        app_info.background = false;
+    }
+
     // If no `options.name` is provided, use the app name from the app_info
     options.name = options.name ?? app_info.name;
 
@@ -343,18 +352,20 @@ const launch_app = async (options)=>{
             width: window_width,
             app: options.name,
             iframe_credentialless: credentialless,
-            is_visible: ! app_info.background,
             is_maximized: options.maximized,
             is_fullpage: options.is_fullpage,
             ...(options.pseudonym ? {pseudonym: options.pseudonym} : {}),
             ...window_options,
             is_resizable: window_resizable,
             has_head: ! hide_titlebar,
-            show_in_taskbar: app_info.background ? false : window_options?.show_in_taskbar,
+            skip_auto_focus: app_info.background, // Don't steal focus for background apps
+            is_visible: !app_info.background, // Hide background apps completely
+            show_in_taskbar: !app_info.background, // Don't show background apps in taskbar
         });
 
-        // If the app is not in the background, show the window
-        if ( ! app_info.background ) {
+        
+        // Background apps are hidden, foreground apps are visible
+        if (!app_info.background) {
             $(el_win).show();
         }
 
@@ -400,7 +411,11 @@ const launch_app = async (options)=>{
 
             // If `window-active` is set (meanign the window is focused), focus the window one more time
             // this is to ensure that the iframe is `definitely` focused and can receive keyboard events (e.g. keydown)
-            if($(process.references.el_win).hasClass('window-active')){
+            // But skip this for background apps to prevent stealing focus
+            const has_active_class = $(process.references.el_win).hasClass('window-active');
+            const is_background = app_info.background;
+            
+            if(has_active_class && !is_background){
                 $(process.references.el_win).focusWindow();
             }
         });

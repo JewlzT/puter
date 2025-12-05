@@ -58,6 +58,12 @@ export class PuterAppCommandProvider {
                     },
                     env: {...ctx.env},
                 };
+                
+                // Check if this is a background command
+                const is_background = ctx.locals.is_background_command;
+                if (is_background) {
+                    args.background = true;
+                }
                 const child = await puter.ui.launchApp(id, args);
 
                 const resize_listener = evt => {
